@@ -2,6 +2,7 @@
     "parser": "@typescript-eslint/parser",
     "extends": [
         "airbnb",
+        "airbnb-base",
         "plugin:prettier/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
@@ -18,6 +19,8 @@
     },
     "rules": {
         "prettier/prettier": ["error"],
+        "arrow-body-style": ["error", "never"],
+        "implicit-arrow-linebreak": ["error", "beside"],
         "react/function-component-definition": {
             "namedComponents": "arrow-function"
         },
