@@ -18,7 +18,8 @@
     },
     "globals": {
         "test":true,
-        "expect": true
+        "expect": true,
+        "document": true
     },
     "rules": {
         "prettier/prettier": ["error"],
