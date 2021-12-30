@@ -33,9 +33,7 @@
   "lint-staged": {
     "linters": {
       "*.js": ["eslint --fix", "prettier --write"]
-  },
-    "ignore": ["src/App.test.js"] 
-  },
+  }},
   "browserslist": {
     "production": [
       ">0.2%",
