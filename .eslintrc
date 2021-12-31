@@ -23,10 +23,11 @@
     },
     "rules": {
         "prettier/prettier": ["error"],
+        "arrow-parens": [2, "as-needed"],
         "react/function-component-definition": [1, {
-            "namedComponents": ["arrow-function"],
-            "unnamedComponents": ["arrow-function"]
-          }],
+            "namedComponents": "arrow-function",
+            "unnamedComponents": "arrow-function"
+            }],
         "react-hooks/exhaustive-deps":          "warn",
         "react-hooks/rules-of-hooks":           "error",
         "react/jsx-filename-extension":         [1, { "extensions": [".js", ".jsx"] }],
