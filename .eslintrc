@@ -16,20 +16,22 @@
             "jsx": true
         }
     },
+    "globals": {
+        "test":true,
+        "expect": true,
+        "document": true
+    },
     "rules": {
         "prettier/prettier": ["error"],
-        "arrow-body-style": ["error", "never"],
-        "implicit-arrow-linebreak": ["error", "beside"],
-        "react/function-component-definition": {
-            "namedComponents": "arrow-function"
-        },
+        "arrow-parens": [2, "as-needed"],
+        "react/function-component-definition": [1, {
+            "namedComponents": "arrow-function",
+            "unnamedComponents": "arrow-function"
+            }],
         "react-hooks/exhaustive-deps":          "warn",
         "react-hooks/rules-of-hooks":           "error",
         "react/jsx-filename-extension":         [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-indent-props":               [2, 4],
-        "react/jsx-indent":                     [2, 4],
-        "react/jsx-one-expression-per-line":    [0],
-        "react/prefer-stateless-function":      [1],
-        "react/static-property-placement":      [1, "property assignment"]
+        "react/jsx-indent":                     [2, 4]
     }
 }
