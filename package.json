@@ -6,7 +6,6 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "body-parser": "^1.19.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "path": "^0.12.7",
@@ -36,8 +35,12 @@
   },
   "lint-staged": {
     "linters": {
-      "*.js": ["eslint --fix", "prettier --write"]
-  }},
+      "*.js": [
+        "eslint --fix",
+        "prettier --write"
+      ]
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
