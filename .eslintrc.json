@@ -9,6 +9,7 @@
           "arrowParens": "avoid"
         }
       ],
+      "eol-last":"error",
       "arrow-parens": [2, "as-needed"],
       "react/function-component-definition": [1, {
         "namedComponents": "arrow-function",
