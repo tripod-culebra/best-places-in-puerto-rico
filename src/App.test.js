@@ -1,8 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { render, screen, waitFor } from '@testing-library/react';
+import App from './App.js';
 
-it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
+test('renders Auth Sign In for Create Account', async () => {
+    render(<App />);
+    await waitFor(() => {
+        const signInElement = screen.queryByText(/Create Account/i);
+        expect(signInElement).toBeInTheDocument();
+    });
 });
