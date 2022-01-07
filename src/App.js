@@ -16,4 +16,9 @@ const App = ({ signOut, user }) => (
     </div>
 );
 
-export default App;
+export default withAuthenticator(App);
+
+App.propTypes = {
+    signOut: PropTypes.elementType.isRequired,
+    user: PropTypes.string.isRequired,
+};
