@@ -1,5 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Amplify } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import './App.css';
 
 const App = () => (
