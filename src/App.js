@@ -2,6 +2,8 @@ import React from 'react';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import './App.css';
+import PropTypes from 'prop-types';
+import awsconfig from './aws-exports';
 
 const App = () => (
     <div className="App">
