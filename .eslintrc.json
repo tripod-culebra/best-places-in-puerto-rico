@@ -12,18 +12,13 @@
           "arrowParens": "avoid"
         }
       ],
+      "import/no-unresolved": [2, {"commonjs": true, "amd": true}],
       "eol-last":"error",
       "arrow-parens": [2, "as-needed"],
       "react/function-component-definition": [1, {
         "namedComponents": "arrow-function",
         "unnamedComponents": "arrow-function"
         }],
-      "import/extensions": [0, "as-needed"],
-      "react/jsx-filename-extension": [
-        "warn",
-        {
-          "extensions": [".js", ".jsx"]
-        }
-      ]
+      "import/extensions": [0, "as-needed"]
     }
   }
