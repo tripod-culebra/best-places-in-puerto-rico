@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "auth": {
+      "bestplacesinprfa1db046": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "awsAccessKeyId",
+      "environmentVariableName": "AWS_ACCESS_KEY_ID"
+    }
+  ],
+  "secretNames": [
+    "aws_access_key_id",
+    "AWS_SECRET_ACCESS_KEY"
+  ]
+}
