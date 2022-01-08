@@ -3,7 +3,7 @@ import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import './index.css';
 import PropTypes from 'prop-types';
-import awsconfig from './aws-exports.js';
+import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
 
