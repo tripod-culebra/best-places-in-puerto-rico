@@ -13,6 +13,7 @@ const App = ({ signOut, user }) => (
         <button type="button" onClick={signOut}>
             Sign out
         </button>
+        <p>test</p>
     </div>
 );
 
