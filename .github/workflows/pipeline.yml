@@ -27,6 +27,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::651044986524:user/best-places
+        aws-region: us-east-1
+
     - name: Install dependencies
       run: npm ci
 
