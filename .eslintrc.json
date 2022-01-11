@@ -9,6 +9,17 @@
           "arrowParens": "avoid"
         }
       ],
+      "no-unused-vars": "off",
+      "no-underscore-dangle": "off",
+      "no-shadow":"off",
+      "no-param-reassign":"off",
+      "react/react-in-jsx-scope": "off",
+      "camelcase":"off",
+      "no-nested-ternary":"off",
+      "no-eval":"off",
+      "react/jsx-no-constructed-context-values": "off",
+      "global-require":"off",
+      "no-console": ["error", {"allow": ["info", "error"]}],
       "eol-last":"error",
       "arrow-parens": [2, "as-needed"],
       "react/function-component-definition": [1, {
