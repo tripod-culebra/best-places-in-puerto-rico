@@ -6,7 +6,7 @@ import LogoutButton from './components/LogoutButton';
 import Profile from './components/Profile';
 
 const App = () => {
-    const { isLoading, error } = useAuth0();
+    const { error, isAuthenticated, isLoading } = useAuth0();
 
     if (isLoading) return <div>Loading...</div>;
 
@@ -14,9 +14,10 @@ const App = () => {
         return <div>Oops... {error.message}</div>;
     }
 
-    return (
+    return !isAuthenticated ? (
+        <LoginButton />
+    ) : (
         <>
-            <LoginButton />
             <LogoutButton />
             <Profile />
         </>
