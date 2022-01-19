@@ -1,13 +1,13 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import style from './index.module.css';
+import './index.css';
 import LoginButton from './components/LoginButton';
-import backGroundImage from './assets/PRCaboRojo.jpeg';
+import backgroundImage from './assets/PRCaboRojo.jpeg';
 import Home from './components/pages/Home';
 import PlacesIWantToGo from './components/pages/PlacesIWantToGo';
 import PlacesIHaveBeen from './components/pages/PlacesIHaveBeen';
-import Navbar from './components/navbar';
+import Logout from './components/navbar';
 
 const App = () => {
     const { error, isAuthenticated, isLoading } = useAuth0();
@@ -20,7 +20,7 @@ const App = () => {
 
     return !isAuthenticated ? (
         <>
-            <img src={backGroundImage} className={style.background} alt="Cabo Rojo" />
+            <img src={backgroundImage} className="background" alt="Cabo Rojo" />
             <LoginButton />
         </>
     ) : (
@@ -29,9 +29,9 @@ const App = () => {
                 <Route exact path="/" element={<Home />} />
                 <Route path="/PlacesIWantToGo" element={<PlacesIWantToGo />} />
                 <Route path="/PlacesIHaveBeen" element={<PlacesIHaveBeen />} />
-                <Route path="/Logout" element={<Navbar />} />
+                <Route path="/Logout" element={<Logout />} />
             </Routes>
-            <Navbar />
+            <Logout />
         </Router>
     );
 };
