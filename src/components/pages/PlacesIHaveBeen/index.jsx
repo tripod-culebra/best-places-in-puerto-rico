@@ -1,11 +1,10 @@
 import React from 'react';
-import styles from '../../../index.module.css';
-import backGroundImage from '../../../assets/PROceanPark.jpeg';
+import backgroundImage from '../../../assets/PROceanPark.jpeg';
 
 const PlacesIHaveBeen = () => (
     <>
-        <img src={backGroundImage} className={styles.background} alt="Ocean Park" />
-        <h1 className={styles.header}>Places I Have Been!</h1>
+        <img src={backgroundImage} className="background" alt="Ocean Park" />
+        <h1 className="header">Places I Have Been!</h1>
     </>
 );
 
