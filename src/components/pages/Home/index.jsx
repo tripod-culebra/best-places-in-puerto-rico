@@ -1,8 +1,7 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { upperFirst } from 'lodash';
-import styles from '../../../index.module.css';
-import backGroundImage from '../../../assets/PRCondado.jpeg';
+import backgroundImage from '../../../assets/PRCondado.jpeg';
 
 const Home = () => {
     const {
@@ -10,8 +9,8 @@ const Home = () => {
     } = useAuth0();
     return (
         <>
-            <img src={backGroundImage} className={styles.background} alt="Condado" />
-            <h1 className={styles.header}>Bienvenidos a Puerto Rico {upperFirst(givenName)}!</h1>
+            <img src={backgroundImage} className="background" alt="Condado" />
+            <h1 className="header">Bienvenidos a Puerto Rico {upperFirst(givenName)}!</h1>
         </>
     );
 };
