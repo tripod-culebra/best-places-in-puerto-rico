@@ -1,9 +1,9 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import styles from './components/index.module.css';
+import style from './index.module.css';
 import LoginButton from './components/LoginButton';
-import backGroundImage from './assets/PR_Cabo_Rojo.jpeg';
+import backGroundImage from './assets/PRCaboRojo.jpeg';
 import Home from './components/pages/Home';
 import PlacesIWantToGo from './components/pages/PlacesIWantToGo';
 import PlacesIHaveBeen from './components/pages/PlacesIHaveBeen';
@@ -20,7 +20,7 @@ const App = () => {
 
     return !isAuthenticated ? (
         <>
-            <img src={backGroundImage} className={styles.backGround} alt="" />
+            <img src={backGroundImage} className={style.background} alt="Cabo Rojo" />
             <LoginButton />
         </>
     ) : (
