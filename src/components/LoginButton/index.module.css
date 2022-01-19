@@ -2,12 +2,12 @@
     margin: 2rem auto;
     padding: 1rem 2rem;
     width:auto;
-    height: 120px;
+    height: 7.5rem;
     cursor: pointer;
     position: relative;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    border-radius: 25px;
-    border-width: 4px;
+    box-shadow: 0 0.75rem 1rem 0 rgba(0,0,0,0.24), 0 1.063rem 3.125rem 0 rgba(0,0,0,0.19);
+    border-radius: 1.563rem;
+    border-width: 0.25rem;
     border-color: #21678f;
     background-color: #1fd5db;
     background-color: #1fd5db;
@@ -18,9 +18,9 @@
     justify-content: center;
     flex-direction: column;
     color: rgb(31, 53, 87);
-    text-shadow: -1px 0 rgb(33, 72, 179), 0 .25px black, .25px 0 black, 0 -.25px black;
+    text-shadow: -0.063rem 0 rgb(33, 72, 179), 0 0.016rem black, 0.016rem 0 black, 0 -0.016rem black;
 }
 
 .login:hover {
     background-color: #21678f;
-  }
+}
