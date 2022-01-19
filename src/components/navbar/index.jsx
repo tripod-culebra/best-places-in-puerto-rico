@@ -8,7 +8,7 @@ const Navbar = () => {
     const { logout } = useAuth0();
 
     return (
-        <>
+        <nav>
             <button type="button" className={styles.home} onClick={() => navigate('/')}>
                 Home
             </button>
@@ -26,10 +26,10 @@ const Navbar = () => {
             >
                 Places I Have Been!!
             </button>
-            <button type="button" className={styles.logout} onClick={() => logout()}>
+            <button type="button" className={styles.logout} onClick={logout}>
                 Log Out!
             </button>
-        </>
+        </nav>
     );
 };
 
