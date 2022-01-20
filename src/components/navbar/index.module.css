@@ -1,0 +1,70 @@
+.logout {
+    margin: 2rem .5rem;
+    padding: 1rem 2rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0.75rem 1rem 0 rgba(0,0,0,0.24), 0 1.063rem 3.125rem 0 rgba(0,0,0,0.19);
+    border-radius: 1.563rem;
+    border-width: 0.25rem;
+    border-color: #21678f;
+    background-color: #1fd5db;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 1.3em;
+    float: right;
+    color: rgb(31, 53, 87);
+    text-shadow: -0.063rem 0 rgb(33, 72, 179), 0 0.016rem black, 0.016rem 0 black, 0 -0.016rem black;
+}
+
+.logout:hover {
+    background-color: #21678f;
+}
+
+.home {
+    margin: 2rem .5rem;
+    padding: 1rem 2rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0.75rem 1rem 0 rgba(0,0,0,0.24), 0 1.063rem 3.125rem 0 rgba(0,0,0,0.19);
+    border-radius: 1.563rem;
+    border-width: 0.25rem;
+    border-color: #21678f;
+    background-color: #1fd5db;
+    background-color: #1fd5db;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 1.3em;
+    float: left;
+    color: rgb(31, 53, 87);
+    text-shadow: -0.063rem 0 rgb(33, 72, 179), 0 0.016rem black, 0.016rem 0 black, 0 -0.016rem black;
+}
+
+.home:hover {
+    background-color: #21678f;
+}
+
+.places {
+    margin: 2rem .5rem;
+    padding: 1rem 2rem;
+    width: 10.938rem;
+    height: 7.5rem;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0.75rem 1rem 0 rgba(0,0,0,0.24), 0 1.063rem 3.125rem 0 rgba(0,0,0,0.19);
+    border-radius: 1.563rem;
+    border-width: 0.25rem;
+    border-color: #21678f;
+    background-color: #1fd5db;
+    background-color: #1fd5db;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 1.3em;
+    float: left;
+    color: rgb(31, 53, 87);
+    text-shadow: -0.063rem 0 rgb(33, 72, 179), 0 0.016rem black, 0.016rem 0 black, 0 -0.016rem black;
+}
+
+.places:hover {
+    background-color: #21678f;
+}
