@@ -21,6 +21,9 @@
 
 .logout:hover {
     background-color: #21678f;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
 }
 
 .home {
@@ -47,6 +50,9 @@
 
 .home:hover {
     background-color: #21678f;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
 }
 
 .placesGo {
@@ -73,6 +79,9 @@
 
 .placesGo:hover {
     background-color: #21678f;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
 }
 
 .placesBeen {
@@ -99,4 +108,7 @@
 
 .placesBeen:hover {
     background-color: #21678f;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
 }
