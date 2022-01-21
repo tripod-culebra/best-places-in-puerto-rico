@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/no-unknown-property */
 import React from 'react';
 import backgroundImage from '../../../assets/PROceanPark.jpeg';
 
@@ -46,9 +44,8 @@ const PlacesIHaveBeen = () => (
                         <th>Rating</th>
                     </tr>
                 </thead>
-                {data.map((val, key) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <tbody key={key}>
+                {data.map(val => (
+                    <tbody>
                         <tr>
                             <td>{val.places}</td>
                             <td>{val.description}</td>
@@ -61,42 +58,72 @@ const PlacesIHaveBeen = () => (
                 ))}
             </table>
         </div>
-        <div className="container">
-            <form className="form">
-                {/* <h2>Enter Places You Have Been</h2> */}
-                <label htmlFor="places">Places I Have Visited</label>
-                <input type="text" id="places" placeholder="Enter Place" />
-                <br />
-                <label htmlFor="description">A Description Of The Place</label>
-                <textarea
-                    id="description"
-                    placeholder="Enter Description"
-                    rows="5"
-                    cols="10"
-                    wrap="soft"
-                />
-                <br />
-                <label htmlFor="what">What I Did?</label>
-                <textarea
-                    type="text"
-                    id="what"
-                    placeholder="Enter What You Did"
-                    rows="5"
-                    cols="10"
-                    wrap="soft"
-                />
-                <br />
-                <label htmlFor="when">When I Went?</label>
-                <input type="date" id="when" />
-                <br />
-                <label htmlFor="who">Who I Went With?</label>
-                <input type="text" id="who" placeholder="Enter Who You Went With" />
-                <br />
-                <label htmlFor="rating">Give A Rating From 1 - 5</label>
-                <input type="number" id="rating" min="1" max="5" placeholder="Enter Rating 1-5" />
-                <br />
-                <br />
-                <input type="submit" id="submit" />
+        <div id="contact-form">
+            <div>
+                <h1>Enter A Magical Place You Have Been!</h1>
+                <h4>Let history show your adventure!!</h4>
+            </div>
+            <p id="failure">Oopsie...adventure not sent.</p>
+            <p id="success">Your adventure was saved successfully. Memories made!</p>
+
+            <form method="post" action="/">
+                <div>
+                    <label htmlFor="PlacesIHaveBeen">
+                        <span>Place I Visted</span>
+                        <input
+                            type="text"
+                            placeholder="Enter Place Visted"
+                            id="PlacesIHaveBeen"
+                            required="required"
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="description">
+                        <span>Description Of Location</span>
+                        <textarea
+                            placeholder="Enter Desctiption"
+                            id="description"
+                            required="required"
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="what">
+                        <span>What Did You Do?</span>
+                        <textarea placeholder="Enter What You Did" id="what" required="required" />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="when">
+                        <span>When Did You Go?</span>
+                        <input type="date" id="when" required="required" />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="who">
+                        <span>Who Went?</span>
+                        <textarea placeholder="Enter Who Went" id="who" required="required" />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="subject">
+                        <span className="required">Enter A Rating From 1-5</span>
+                        <input
+                            type="number"
+                            id="subject"
+                            min="1"
+                            max="5"
+                            placeholder="Enter Rating"
+                            required="required"
+                        />
+                    </label>
+                </div>
+                <div>
+                    <button name="submit" type="submit" id="submit">
+                        SAVE THE PLACE YOU HAVE BEEN
+                    </button>
+                </div>
             </form>
         </div>
     </div>
