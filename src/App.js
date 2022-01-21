@@ -29,7 +29,6 @@ const App = () => {
                 <Route exact path="/" element={<Home />} />
                 <Route path="/PlacesIWantToGo" element={<PlacesIWantToGo />} />
                 <Route path="/PlacesIHaveBeen" element={<PlacesIHaveBeen />} />
-                {/* <Route path="/Logout" element={<Logout />} /> */}
             </Routes>
             <Navbar />
         </Router>
