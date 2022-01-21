@@ -14,14 +14,14 @@ const Navbar = () => {
             </button>
             <button
                 type="button"
-                className={styles.places}
+                className={styles.placesGo}
                 onClick={() => navigate('/PlacesIWantToGo')}
             >
                 Places I Want To Go!!
             </button>
             <button
                 type="button"
-                className={styles.places}
+                className={styles.placesBeen}
                 onClick={() => navigate('/PlacesIHaveBeen')}
             >
                 Places I Have Been!!
