@@ -7,7 +7,7 @@ import backgroundImage from './assets/PRCaboRojo.jpeg';
 import Home from './components/pages/Home';
 import PlacesIWantToGo from './components/pages/PlacesIWantToGo';
 import PlacesIHaveBeen from './components/pages/PlacesIHaveBeen';
-import Logout from './components/navbar';
+import Navbar from './components/navbar';
 
 const App = () => {
     const { error, isAuthenticated, isLoading } = useAuth0();
@@ -29,9 +29,9 @@ const App = () => {
                 <Route exact path="/" element={<Home />} />
                 <Route path="/PlacesIWantToGo" element={<PlacesIWantToGo />} />
                 <Route path="/PlacesIHaveBeen" element={<PlacesIHaveBeen />} />
-                <Route path="/Logout" element={<Logout />} />
+                {/* <Route path="/Logout" element={<Logout />} /> */}
             </Routes>
-            <Logout />
+            <Navbar />
         </Router>
     );
 };
