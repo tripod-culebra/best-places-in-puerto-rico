@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -25,12 +26,12 @@ const App = () => {
         </>
     ) : (
         <Router>
+            <Navbar />
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/PlacesIWantToGo" element={<PlacesIWantToGo />} />
                 <Route path="/PlacesIHaveBeen" element={<PlacesIHaveBeen />} />
             </Routes>
-            <Navbar />
         </Router>
     );
 };
