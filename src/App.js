@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
