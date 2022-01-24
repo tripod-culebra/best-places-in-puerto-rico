@@ -32,6 +32,22 @@ const data = [
     },
 ];
 
+const postPlace = place => {
+    fetch('http://localhost:3000/PlacesIWantToGo', {
+        method: 'POST',
+        contentType: 'application/json',
+        body: JSON.stringify({ place }),
+    })
+        .then(res => {
+            console.info(res, 'res posting placeIWantToGo');
+        })
+        .catch(error => {
+            console.error(error, 'error in posting placeIWantToGo');
+        });
+};
+
+postPlace();
+
 const PlacesIWantToGo = () => (
     <>
         <img src={backgroundImage} className="background" alt="Arecibo" />
