@@ -10,6 +10,7 @@
         }
       ],
       "eol-last":"error",
+      "no-console": ["error", {"allow": ["error", "info"]}],
       "arrow-parens": [2, "as-needed"],
       "react/function-component-definition": [1, {
         "namedComponents": "arrow-function",
