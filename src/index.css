@@ -199,7 +199,6 @@ button {
   font-size: 1.3em; 
   color: rgb(31, 53, 87);
   text-shadow: -0.063rem 0 rgb(33, 72, 179), 0 0.016rem black, 0.016rem 0 black, 0 -0.016rem black;
-  z-index: 1;
 }
 
 button:hover {
