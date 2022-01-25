@@ -7,7 +7,7 @@ const LoginButton = () => {
     const { login } = styles;
 
     return (
-        <button type="button" className={login} button onClick={loginWithRedirect}>
+        <button type="button" className={login} onClick={loginWithRedirect}>
             Log In To Plan Your Next Puerto Rican Adventure!
         </button>
     );
