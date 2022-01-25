@@ -11,63 +11,55 @@ const PlacesGoForm = () => (
 
         <form method="post" action="/">
             <div>
-                <label htmlFor="PlacesIWantToGo">
+                <label htmlFor="placesGo">
                     <span>Place I Want To Go To</span>
                     <input
                         type="text"
                         placeholder="Enter Place I Want To Go"
-                        id="PlacesIWantToGo"
-                        required="required"
+                        id="placesGo"
+                        required
                     />
                 </label>
             </div>
             <div>
-                <label htmlFor="description">
+                <label htmlFor="descriptionGo">
                     <span>Description Of Location</span>
-                    <textarea
-                        placeholder="Enter Desctiption"
-                        id="description"
-                        required="required"
-                    />
+                    <textarea placeholder="Enter Desctiption" id="descriptionGo" required />
                 </label>
             </div>
             <div>
-                <label htmlFor="what">
+                <label htmlFor="whatGo">
                     <span>What Do You Want To Do?</span>
-                    <textarea
-                        placeholder="Enter What You Want To Do"
-                        id="what"
-                        required="required"
-                    />
+                    <textarea placeholder="Enter What You Want To Do" id="whatGo" required />
                 </label>
             </div>
             <div>
-                <label htmlFor="when">
+                <label htmlFor="whenGo">
                     <span>When Do You Want To Go?</span>
-                    <input type="date" id="when" required="required" />
+                    <input type="date" id="whenGo" required />
                 </label>
             </div>
             <div>
-                <label htmlFor="who">
+                <label htmlFor="whoGo">
                     <span>Who Do You Want To Go?</span>
-                    <textarea placeholder="Enter Who Went" id="who" required="required" />
+                    <textarea placeholder="Enter Who Went" id="whoGo" required />
                 </label>
             </div>
             <div>
-                <label htmlFor="subject">
+                <label htmlFor="ratingGo">
                     <span className="required">Enter A Rating From 1-5</span>
                     <input
                         type="number"
-                        id="subject"
+                        id="ratingGo"
                         min="1"
                         max="5"
                         placeholder="Enter Rating"
-                        required="required"
+                        required
                     />
                 </label>
             </div>
             <div>
-                <button name="submit" type="submit" id="submit">
+                <button name="submit" type="submit" id="submitGo">
                     SAVE WHERE TO GO
                 </button>
             </div>
