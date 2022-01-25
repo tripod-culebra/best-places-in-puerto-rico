@@ -11,59 +11,50 @@ const PlacesBeenForm = () => (
 
         <form method="post" action="/">
             <div>
-                <label htmlFor="PlacesIHaveBeen">
+                <label htmlFor="placesBeen">
                     <span>Place I Visted</span>
-                    <input
-                        type="text"
-                        placeholder="Enter Place Visted"
-                        id="PlacesIHaveBeen"
-                        required="required"
-                    />
+                    <input type="text" placeholder="Enter Place Visted" id="placesBeen" required />
                 </label>
             </div>
             <div>
-                <label htmlFor="description">
+                <label htmlFor="descriptionBeen">
                     <span>Description Of Location</span>
-                    <textarea
-                        placeholder="Enter Desctiption"
-                        id="description"
-                        required="required"
-                    />
+                    <textarea placeholder="Enter Desctiption" id="descriptionBeen" required />
                 </label>
             </div>
             <div>
-                <label htmlFor="what">
+                <label htmlFor="whatBeen">
                     <span>What Did You Do?</span>
-                    <textarea placeholder="Enter What You Did" id="what" required="required" />
+                    <textarea placeholder="Enter What You Did" id="whatBeen" required />
                 </label>
             </div>
             <div>
-                <label htmlFor="when">
+                <label htmlFor="whenBeen">
                     <span>When Did You Go?</span>
-                    <input type="date" id="when" required="required" />
+                    <input type="date" id="whenBeen" required />
                 </label>
             </div>
             <div>
-                <label htmlFor="who">
+                <label htmlFor="whoBeen">
                     <span>Who Went?</span>
-                    <textarea placeholder="Enter Who Went" id="who" required="required" />
+                    <textarea placeholder="Enter Who Went" id="whoBeen" required />
                 </label>
             </div>
             <div>
-                <label htmlFor="subject">
+                <label htmlFor="ratingBeen">
                     <span className="required">Enter A Rating From 1-5</span>
                     <input
                         type="number"
-                        id="subject"
+                        id="ratingBeen"
                         min="1"
                         max="5"
                         placeholder="Enter Rating"
-                        required="required"
+                        required
                     />
                 </label>
             </div>
             <div>
-                <button name="submit" type="submit" id="submit">
+                <button name="submit" type="submit" id="submitBeen">
                     SAVE THE PLACE YOU HAVE BEEN
                 </button>
             </div>
