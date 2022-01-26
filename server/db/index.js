@@ -64,10 +64,10 @@ const getTop25Places = () =>
             .limit(25)
             .exec((error, results) => {
                 if (error) {
-                    console.error(error, 'error in getting top 25 results!');
+                    console.error(error, 'error in getting top 25 results db/index.js!');
                     reject(error);
                 } else {
-                    console.info('found top 25 results!');
+                    console.info('found top 25 results in db/index.js!');
                     resolve(results);
                 }
             });
