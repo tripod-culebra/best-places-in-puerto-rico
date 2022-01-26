@@ -3,7 +3,7 @@ import backgroundImage from '../../../assets/PRArecibo.jpeg';
 import PlacesGoForm from '../../forms/PlacesGoForm';
 
 const PlacesIWantToGo = () => {
-    const data = useState([]);
+    const { data } = useState([]);
     return (
         <>
             <img src={backgroundImage} className="background" alt="Arecibo" />
