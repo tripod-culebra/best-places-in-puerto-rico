@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const db = require('../db/index');
-// const PlacesGoForm = require('../../src/components/forms/PlacesGoForm/index');
 
 const Places = Router();
+
 Places.post('/', (req, res) =>
     db
         .savePlace(req.body.formData)
@@ -16,6 +16,7 @@ Places.post('/', (req, res) =>
             console.error(error, 'error getting repos repos.js');
         })
 );
+
 Places.get('/', (req, res) =>
     db
         .getTop25Places()
