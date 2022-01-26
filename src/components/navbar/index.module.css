@@ -4,22 +4,22 @@ button {
 
 .logoutCSS {
     right: 0.5rem;
-    position:absolute;
+    position: absolute;
 }
 
 .home {
     left: .5rem;
-    position:absolute;
+    position: absolute;
 }
 
 .placesGo {
     left: 9rem;
     width: 10.938rem;
-    position:absolute;
+    position: absolute;
 }
 
 .placesBeen {
     left: 16.1em;
     width: 10.938rem;
-    position:absolute;
+    position: absolute;
 }
