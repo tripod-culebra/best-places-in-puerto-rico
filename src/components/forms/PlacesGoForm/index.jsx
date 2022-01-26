@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const PlacesGoForm = () => {
@@ -13,13 +14,11 @@ const PlacesGoForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
         console.info(formData, 'form data in handlesubmit');
-        const url = 'http://localhost:8080/api/places';
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ formData }),
-        };
-        fetch(url, requestOptions)
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/api/places',
+            data: { formData },
+        })
             .then(res => console.info(res, 'submitted successfully'))
             .catch(error => console.error(error, 'error submitting form'));
     };
@@ -32,8 +31,6 @@ const PlacesGoForm = () => {
             </div>
             <p id="failure">Oopsie...Adventure not sent.</p>
             <p id="success">Your new adventure was saved successfully. Cant wait!</p>
-
-            {/* <form onSubmit={handleSubmit} method="post" action="mongodb://localhost/PRplaces"> */}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="PlacesIWantToGo">
@@ -117,7 +114,6 @@ const PlacesGoForm = () => {
                     <button name="submit" type="submit" id="submit">
                         SAVE WHERE TO GO
                     </button>
-                    {console.info(formData, 'WHAT is this form data!!')}
                 </div>
             </form>
         </div>
