@@ -3,7 +3,7 @@ import backgroundImage from '../../../assets/PROceanPark.jpeg';
 import PlacesBeenForm from '../../forms/PlacesBeenForm';
 
 const PlacesIHaveBeen = () => {
-    const data = useState([]);
+    const { data } = useState([]);
     return (
         <>
             <img src={backgroundImage} className="background" alt="Ocean Park" />
