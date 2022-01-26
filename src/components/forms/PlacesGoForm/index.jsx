@@ -7,12 +7,21 @@ const PlacesGoForm = () => {
         what: '',
         when: '',
         who: '',
-        rating: 0,
+        rating: '',
     });
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.info(formData);
+        console.info(formData, 'form data in handlesubmit');
+        const url = 'http://localhost:8080/api/places';
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ formData }),
+        };
+        fetch(url, requestOptions)
+            .then(res => console.info(res, 'submitted successfully'))
+            .catch(error => console.error(error, 'error submitting form'));
     };
 
     return (
@@ -24,12 +33,8 @@ const PlacesGoForm = () => {
             <p id="failure">Oopsie...Adventure not sent.</p>
             <p id="success">Your new adventure was saved successfully. Cant wait!</p>
 
-            <form
-                onSubmit={handleSubmit}
-                method="post"
-                action="http://localhost:3000/PlacesIWantToGo"
-            >
-                {/* <form onSubmit={handleSubmit}> */}
+            {/* <form onSubmit={handleSubmit} method="post" action="mongodb://localhost/PRplaces"> */}
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="PlacesIWantToGo">
                         <span>Place I Want To Go To</span>
@@ -112,6 +117,7 @@ const PlacesGoForm = () => {
                     <button name="submit" type="submit" id="submit">
                         SAVE WHERE TO GO
                     </button>
+                    {console.info(formData, 'WHAT is this form data!!')}
                 </div>
             </form>
         </div>
