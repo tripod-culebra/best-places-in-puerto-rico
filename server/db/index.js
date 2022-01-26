@@ -1,5 +1,3 @@
-/* eslint-disable no-return-assign */
-/* eslint-disable consistent-return */
 const mongoose = require('mongoose');
 
 const DATABASE = 'PRplaces';
@@ -11,14 +9,15 @@ mongoose
     .catch(err => console.error('Failed to connect to database', err));
 
 const placesSchema = new mongoose.Schema({
-    // id: Number,
+    id: Number,
     place: String,
     description: String,
     what: String,
-    when: { type: Date, default: Date.now },
+    when: { type: Date },
     who: String,
     rating: String,
     completed: Boolean,
+    date: { type: Date, default: Date.now },
 });
 
 const Place = mongoose.model('Place', placesSchema);
@@ -34,33 +33,17 @@ const savePlace = place => {
         rating: place.rating,
         completed: place.completed,
     });
-    // return Place.find({ description: place.description }).then(results => {
-    // if (results.length === 0) {
-    return savedPlace.save(place);
-    // }
-    // });
+    return Place.find({ description: place.description }).then(results => {
+        if (results.length === 0) {
+            savedPlace.save(place);
+        }
+    });
 };
 
-// const getPlaces = () =>
-//     (getPlacesPromise = new Promise((resolve, reject) => {
-//         Place.find().exec((error, results) => {
-//             if (error) {
-//                 console.error(error, 'error getting places');
-//                 reject(error);
-//             } else {
-//                 console.info(results, 'found places');
-//                 resolve(results);
-//             }
-//         });
-//     }));
-
-// const getTop25Places = () => Place.find({}).sort({ date: 'desc' }).limit(25);
 const getTop25Places = () =>
-    // eslint-disable-next-line no-undef
-    (getTop25ReposPromise = new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
         Place.find()
-            // find returns a promise but wrap the whole in a promise to have the chain be a promise
-            .sort({ date: -1 })
+            .sort({ date: 'desc' })
             .limit(25)
             .exec((error, results) => {
                 if (error) {
@@ -71,8 +54,7 @@ const getTop25Places = () =>
                     resolve(results);
                 }
             });
-        // );
-    }));
+    });
 
 module.exports.savePlace = savePlace;
 module.exports.getTop25Places = getTop25Places;
