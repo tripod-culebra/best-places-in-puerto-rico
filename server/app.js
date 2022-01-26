@@ -11,13 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(CLIENT_PATH));
 app.use(cors());
 app.use('/api/places', Places);
-// app.get('/api/places', (req, res) => {
-//     res.send('hello worls');
-// });
-
-// app.post('/api/places', (req, res) => {
-//     res.send('hiiiii');
-// });
 
 module.exports = {
     app,
