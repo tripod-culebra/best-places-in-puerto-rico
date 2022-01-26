@@ -7,7 +7,7 @@
 
 const { app } = require('./app');
 
-const PORT = 3000 || 8080;
+const PORT = 8080;
 
 app.listen(PORT, () => {
     console.info(`Server listening on :${PORT}`);
