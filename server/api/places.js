@@ -18,9 +18,9 @@ Places.post('/', (req, res) =>
 );
 Places.get('/', (req, res) =>
     db
-        .getTop25Places(req.body.formData)
+        .getTop25Places()
         .then(results => {
-            console.info(results[0], 'results in get placesIWantToGo api/places');
+            console.info(results, 'results in get placesIWantToGo api/places');
             res.status(201).send(results);
         })
         .catch(error => {
