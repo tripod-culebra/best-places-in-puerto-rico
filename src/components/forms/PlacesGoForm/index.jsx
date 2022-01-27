@@ -66,4 +66,5 @@ const PlacesGoForm = () => (
         </form>
     </div>
 );
+
 export default PlacesGoForm;
