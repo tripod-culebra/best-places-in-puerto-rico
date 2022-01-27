@@ -38,7 +38,7 @@ const savePlace = place => {
     });
 };
 
-const getTop25Places = () =>
+const getTopPlaces = () =>
     new Promise((resolve, reject) => {
         Place.find({ completed: false })
             .sort({ when: 'desc' })
@@ -54,7 +54,7 @@ const getTop25Places = () =>
             });
     });
 
-const getTop25PlacesBeen = () =>
+const getTopPlacesBeen = () =>
     new Promise((resolve, reject) => {
         Place.find({ completed: true })
             .sort({ when: 'desc' })
@@ -71,5 +71,5 @@ const getTop25PlacesBeen = () =>
     });
 
 module.exports.savePlace = savePlace;
-module.exports.getTop25Places = getTop25Places;
-module.exports.getTop25PlacesBeen = getTop25PlacesBeen;
+module.exports.getTopPlaces = getTopPlaces;
+module.exports.getTopPlacesBeen = getTopPlacesBeen;
