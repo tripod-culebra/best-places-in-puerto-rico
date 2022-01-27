@@ -2,14 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  box-sizing:border-box;
-  -webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-  -webkit-font-smoothing:antialiased;
-  -moz-font-smoothing:antialiased;
-  -o-font-smoothing:antialiased;
-  font-smooth:antialiased;
-  text-rendering:optimizeLegibility;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smooth: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -34,7 +34,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
 }
@@ -96,12 +96,12 @@ h4{
   background-color:rgba(72,72,72,0.9);
   padding: 0.625rem 1.25rem 1.875rem 1.25rem;
   margin: 0 auto;
-  max-width:50%;
+  max-width: 50%;
   position: relative;
-  margin-top:1.875rem;
-  border-radius:0.438rem;
-  -webkit-border-radius:0.438rem;
-  -moz-border-radius:0.438rem;
+  margin-top: 1.875rem;
+  border-radius: 0.438rem;
+  -webkit-border-radius: 0.438rem;
+  -moz-border-radius: 0.438rem;
 }
 #places-form input,   
 #places-form select,   
@@ -114,7 +114,7 @@ h4{
 #places-form input,   
 #places-form select,   
 #places-form textarea { 
-  width:100%;
+  width: 100%;
   background: #fff;
   border: 0; 
   -moz-border-radius: 0.25rem;  
@@ -129,20 +129,20 @@ h4{
   background-color: #E5E6E7; 
 }  
 #places-form textarea {
-  width:100%;
+  width: 100%;
   height: 3.75rem;
   overflow-wrap: break-word;
 }
 #places-form button[type="submit"] {
-  cursor:pointer;
+  cursor: pointer;
   height: 2.7rem;
-  width:100%;
-  border:none;
+  width: 100%;
+  border: none;
   background: #1fd5db;
-  color:#FFF;
-  margin:0 0 0.313rem;
-  padding:0.625rem;
-  border-radius:0.313rem;
+  color: #FFF;
+  margin: 0 0 0.313rem;
+  padding: 0.625rem;
+  border-radius: 0.313rem;
   color: rgb(31, 53, 87);
   text-shadow: -0.063rem 0 rgb(33, 72, 179), 0 0.016rem black, 0.016rem 0 black, 0 -0.016rem black;
 }
@@ -156,11 +156,11 @@ h4{
   border-color: #21678f;
 }
 #places-form button[type="submit"]:active {
-  box-shadow:inset 0 0.063rem 0.188rem rgba(0,0,0,0.5);
+  box-shadow: inset 0 0.063rem 0.188rem rgba(0,0,0,0.5);
 }
 
 #places-form .required {  
-  font-weight:bold;  
+  font-weight: bold;  
   color: #E5E6E7;      
 }
 
@@ -168,7 +168,7 @@ h4{
   (especially since the php is missing) */
 #failure, #success {
   color: #6EA070; 
-  display:none;  
+  display: none;  
 }
 
 /* Make form look nice on smaller screens */
@@ -199,7 +199,6 @@ button {
   font-size: 1.3em; 
   color: rgb(31, 53, 87);
   text-shadow: -0.063rem 0 rgb(33, 72, 179), 0 0.016rem black, 0.016rem 0 black, 0 -0.016rem black;
-  z-index: 1;
 }
 
 button:hover {
