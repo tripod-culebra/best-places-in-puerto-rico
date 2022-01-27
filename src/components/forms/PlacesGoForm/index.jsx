@@ -123,4 +123,5 @@ const PlacesGoForm = () => {
         </div>
     );
 };
+
 export default PlacesGoForm;
