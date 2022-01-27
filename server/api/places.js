@@ -33,7 +33,7 @@ Places.post('/been', (req, res) =>
 
 Places.get('/', (req, res) =>
     db
-        .getTop25Places()
+        .getTopPlaces()
         .then(results => {
             console.info(results, 'results in get placesIWantToGo api/places');
             res.status(201).send(results);
@@ -46,7 +46,7 @@ Places.get('/', (req, res) =>
 
 Places.get('/been', (req, res) =>
     db
-        .getTop25PlacesBeen()
+        .getTopPlacesBeen()
         .then(results => {
             console.info(results, 'results in get placesIWantToGo api/places');
             res.status(201).send(results);
