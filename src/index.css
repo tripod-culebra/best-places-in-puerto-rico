@@ -208,3 +208,12 @@ button:hover {
   -moz-transition:background 0.3s ease-in-out;
   transition:background-color 0.3s ease-in-out;
 }
+
+.check-box {
+  float: right;
+  left: 20rem;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  box-shadow: 0 0.75rem 1rem 0 rgba(0,0,0,0.24), 0 1.063rem 3.125rem 0 rgba(0,0,0,0.19);
+}
