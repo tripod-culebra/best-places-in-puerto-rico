@@ -10,7 +10,6 @@ const PlacesIWantToGo = () => {
             setData(result.data);
         });
     }, []);
-
     return (
         <>
             <img src={backgroundImage} className="background" alt="Arecibo" />
@@ -34,9 +33,12 @@ const PlacesIWantToGo = () => {
                                 <td>{place}</td>
                                 <td>{description}</td>
                                 <td>{what}</td>
-                                <td>{when}</td>
+                                <td>{when.slice(0, 10)}</td>
                                 <td>{who}</td>
                                 <td>{rating}</td>
+                                <td>
+                                    <input type="checkbox" className="check-box" />
+                                </td>
                             </tr>
                         </tbody>
                     ))}
