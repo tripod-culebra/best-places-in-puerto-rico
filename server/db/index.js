@@ -9,7 +9,6 @@ mongoose
     .catch(err => console.error('Failed to connect to database', err));
 
 const placesSchema = new mongoose.Schema({
-    id: Number,
     place: String,
     description: String,
     what: String,
@@ -17,14 +16,13 @@ const placesSchema = new mongoose.Schema({
     who: String,
     rating: String,
     completed: Boolean,
-    date: { type: Date, default: Date.now },
+    date: { type: Date },
 });
 
 const Place = mongoose.model('Place', placesSchema);
 
 const savePlace = place => {
     const savedPlace = new Place({
-        id: place.id,
         place: place.place,
         description: place.description,
         what: place.what,
@@ -42,9 +40,25 @@ const savePlace = place => {
 
 const getTop25Places = () =>
     new Promise((resolve, reject) => {
-        Place.find()
-            .sort({ date: 'desc' })
-            .limit(25)
+        Place.find({ completed: false })
+            .sort({ when: 'desc' })
+            .limit(50)
+            .exec((error, results) => {
+                if (error) {
+                    console.error(error, 'error in getting top 25 results db/index.js!');
+                    reject(error);
+                } else {
+                    console.info('found top 25 results in db/index.js!');
+                    resolve(results);
+                }
+            });
+    });
+
+const getTop25PlacesBeen = () =>
+    new Promise((resolve, reject) => {
+        Place.find({ completed: true })
+            .sort({ when: 'desc' })
+            .limit(50)
             .exec((error, results) => {
                 if (error) {
                     console.error(error, 'error in getting top 25 results db/index.js!');
@@ -58,3 +72,4 @@ const getTop25Places = () =>
 
 module.exports.savePlace = savePlace;
 module.exports.getTop25Places = getTop25Places;
+module.exports.getTop25PlacesBeen = getTop25PlacesBeen;
