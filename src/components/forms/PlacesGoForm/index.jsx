@@ -9,6 +9,7 @@ const PlacesGoForm = () => {
         when: '',
         who: '',
         rating: '',
+        completed: false,
     });
 
     const handleSubmit = e => {
@@ -19,7 +20,10 @@ const PlacesGoForm = () => {
             url: 'http://localhost:8080/api/places',
             data: { formData },
         })
-            .then(res => console.info(res, 'submitted successfully'))
+            .then(res => {
+                window.location.reload(false);
+                console.info(res, 'submitted successfully');
+            })
             .catch(error => console.error(error, 'error submitting form'));
     };
 
@@ -41,7 +45,7 @@ const PlacesGoForm = () => {
                             type="text"
                             placeholder="Enter Place I Want To Go"
                             id="PlacesIWantToGo"
-                            required="required"
+                            required
                         />
                     </label>
                 </div>
@@ -55,7 +59,7 @@ const PlacesGoForm = () => {
                             value={formData.description}
                             placeholder="Enter Desctiption"
                             id="description"
-                            required="required"
+                            required
                         />
                     </label>
                 </div>
@@ -67,7 +71,7 @@ const PlacesGoForm = () => {
                             value={formData.what}
                             placeholder="Enter What You Want To Do"
                             id="what"
-                            required="required"
+                            required
                         />
                     </label>
                 </div>
@@ -79,7 +83,7 @@ const PlacesGoForm = () => {
                             value={formData.when}
                             type="date"
                             id="when"
-                            required="required"
+                            required
                         />
                     </label>
                 </div>
@@ -91,7 +95,7 @@ const PlacesGoForm = () => {
                             value={formData.who}
                             placeholder="Enter Who Went"
                             id="who"
-                            required="required"
+                            required
                         />
                     </label>
                 </div>
@@ -106,7 +110,7 @@ const PlacesGoForm = () => {
                             min="1"
                             max="5"
                             placeholder="Enter Rating"
-                            required="required"
+                            required
                         />
                     </label>
                 </div>
