@@ -61,4 +61,5 @@ const PlacesBeenForm = () => (
         </form>
     </div>
 );
+
 export default PlacesBeenForm;
