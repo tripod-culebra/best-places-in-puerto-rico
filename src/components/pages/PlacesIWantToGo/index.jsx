@@ -39,4 +39,5 @@ const PlacesIWantToGo = () => {
         </>
     );
 };
+
 export default PlacesIWantToGo;
