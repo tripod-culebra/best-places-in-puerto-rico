@@ -20,14 +20,14 @@ Places.post('/', (req, res) =>
 Places.post('/been', (req, res) =>
     db
         .savePlace(req.body.formData)
-        .then(results => {
-            console.info(results, 'results in post placesBeen api/places');
-            res.send(results);
+        .then(response => {
+            console.info(response, 'response in post placesBeen api/places');
+            res.send(response);
             res.status(201);
         })
         .catch(error => {
             res.sendStatus(500);
-            console.error(error, 'error getting placesBeen api/places');
+            console.error(error, 'error saving placesBeen api/places');
         })
 );
 
@@ -35,27 +35,39 @@ Places.get('/', (req, res) =>
     db
         .getTopPlaces()
         .then(results => {
-            console.info(results, 'results in get placesIWantToGo api/places');
+            console.info(results, 'results in getting placeGo api/places');
             res.status(201).send(results);
         })
         .catch(error => {
             res.status(500).json(JSON.stringify({ results: 'Okay' }));
-            console.error(error, 'error getting repos repos.js');
+            console.error(error, 'error getting placeGo api/places');
         })
 );
 
-Places.get('/been', (req, res) =>
-    db
-        .getTopPlacesBeen()
+Places.get('/been', (req, res) => {
+    db.getTopPlacesBeen()
         .then(results => {
-            console.info(results, 'results in get placesIWantToGo api/places');
+            console.info(results, 'results getting placebeen api/places');
             res.status(201).send(results);
         })
         .catch(error => {
             res.status(500).json(JSON.stringify({ results: 'Okay' }));
-            console.error(error, 'error getting repos repos.js');
+            console.error(error, 'error getting placebeen api/places');
+        });
+});
+
+Places.put('/update', (req, res) => {
+    const changeId = Object.keys(req.body);
+    db.updatePlaceBeen(changeId)
+        .then(response => {
+            console.info(response, 'response in update placesIWantToGo api/places');
+            res.status(201).send(response);
         })
-);
+        .catch(error => {
+            res.status(500).json(JSON.stringify({ results: 'Okay' }));
+            console.error(error, 'error update in placeBeen api/places');
+        });
+});
 
 module.exports = {
     Places,
