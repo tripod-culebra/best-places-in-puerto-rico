@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
 const mongoose = require('mongoose');
 
 const DATABASE = 'PRplaces';
@@ -70,6 +72,22 @@ const getTopPlacesBeen = () =>
             });
     });
 
+const updatePlaceBeen = id =>
+    new Promise((resolve, reject) => {
+        Place.findOneAndUpdate({ _id: id }, { completed: true }, { new: true }).exec(
+            (error, results) => {
+                if (error) {
+                    console.error(error, 'error in updating place db/index.js!');
+                    reject(error);
+                } else {
+                    console.info('updated place in db/index.js!');
+                    resolve(results);
+                }
+            }
+        );
+    });
+
 module.exports.savePlace = savePlace;
 module.exports.getTopPlaces = getTopPlaces;
 module.exports.getTopPlacesBeen = getTopPlacesBeen;
+module.exports.updatePlaceBeen = updatePlaceBeen;
