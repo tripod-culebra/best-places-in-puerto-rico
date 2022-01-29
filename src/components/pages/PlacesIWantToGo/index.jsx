@@ -9,6 +9,19 @@ const PlacesIWantToGo = () => {
             setData(result.data);
         });
     }, []);
+
+    const handleChange = _id => {
+        axios
+            .put('http://localhost:8080/api/places/update', _id)
+            .then(response => {
+                console.info(response, 'success in updating place in placesiwanttogo');
+                window.location.reload(false);
+            })
+            .catch(error => {
+                console.error(error, 'error in updating place in placesiwanttogo');
+            });
+    };
+
     return (
         <>
             <h1 className="header">Places I Want To Go!</h1>
@@ -35,7 +48,11 @@ const PlacesIWantToGo = () => {
                                 <td>{who}</td>
                                 <td>{rating}</td>
                                 <td>
-                                    <input type="checkbox" className="check-box" />
+                                    <input
+                                        type="checkbox"
+                                        className="check-box"
+                                        onChange={() => handleChange(_id)}
+                                    />
                                 </td>
                             </tr>
                         </tbody>
