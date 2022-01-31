@@ -33,8 +33,6 @@ const PlacesGoForm = () => {
                 <h1>Enter A Magical You Want To Visit!</h1>
                 <h4>Lets create memories!!</h4>
             </div>
-            <p id="failure">Oopsie...Adventure not sent.</p>
-            <p id="success">Your new adventure was saved successfully. Cant wait!</p>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="PlacesIWantToGo">
