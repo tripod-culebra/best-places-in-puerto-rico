@@ -9,6 +9,19 @@ const PlacesIHaveBeen = () => {
             setData(result.data);
         });
     }, []);
+
+    const handleChange = _id => {
+        axios
+            .delete(`http://localhost:8080/api/places/delete`, { data: { _id } })
+            .then(response => {
+                console.info(response, 'success in deleting place in placesihavebeen');
+                window.location.reload(false);
+            })
+            .catch(error => {
+                console.error(error, 'error in deleting place in placesihavebeen');
+            });
+    };
+
     return (
         <div>
             <h1 className="header">Places I Have Been!</h1>
@@ -22,6 +35,7 @@ const PlacesIHaveBeen = () => {
                             <th>When I Went</th>
                             <th>Who Went?</th>
                             <th>Rating</th>
+                            <th>Delete?</th>
                         </tr>
                     </thead>
                     {data.map(({ place, description, what, when, who, rating, _id }) => (
@@ -33,6 +47,13 @@ const PlacesIHaveBeen = () => {
                                 <td>{when.slice(0, 10)}</td>
                                 <td>{who}</td>
                                 <td>{rating}</td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        className="check-box"
+                                        onChange={() => handleChange(_id)}
+                                    />
+                                </td>
                             </tr>
                         </tbody>
                     ))}
