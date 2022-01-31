@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginButton from './components/LoginButton';
 import Home from './components/pages/Home';
-// import PlacesIWantToGo from './components/pages/PlacesIWantToGo';
+import PlacesIWantToGo from './components/pages/PlacesIWantToGo';
 import PlacesIHaveBeen from './components/pages/PlacesIHaveBeen';
 import Navbar from './components/navbar';
 
@@ -26,7 +26,7 @@ const App = () => {
                 <Navbar setBackgroundImageType={setBackgroundImageType} />
                 <Routes>
                     <Route exact path="/" element={<Home />} />
-                    {/* <Route path="/PlacesIWantToGo" element={<PlacesIWantToGo />} /> */}
+                    <Route path="/PlacesIWantToGo" element={<PlacesIWantToGo />} />
                     <Route path="/PlacesIHaveBeen" element={<PlacesIHaveBeen />} />
                 </Routes>
             </Router>
