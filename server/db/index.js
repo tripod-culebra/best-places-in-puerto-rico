@@ -87,7 +87,21 @@ const updatePlaceBeen = id =>
         );
     });
 
+const deletePlaceBeen = id =>
+    new Promise((resolve, reject) => {
+        Place.deleteOne({ _id: id }, { new: true }).exec((error, results) => {
+            if (error) {
+                console.error(error, 'error in deleting place db/index.js!');
+                reject(error);
+            } else {
+                console.info('deleted place in db/index.js!');
+                resolve(results);
+            }
+        });
+    });
+
 module.exports.savePlace = savePlace;
 module.exports.getTopPlaces = getTopPlaces;
 module.exports.getTopPlacesBeen = getTopPlacesBeen;
 module.exports.updatePlaceBeen = updatePlaceBeen;
+module.exports.deletePlaceBeen = deletePlaceBeen;
