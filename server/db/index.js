@@ -21,15 +21,16 @@ const placesSchema = new mongoose.Schema({
 
 const Place = mongoose.model('Place', placesSchema);
 
-const savePlace = place => {
+const savePlace = newPlace => {
+    const { place, description, what, when, who, rating, completed } = newPlace;
     const savedPlace = new Place({
-        place: place.place,
-        description: place.description,
-        what: place.what,
-        when: place.when,
-        who: place.who,
-        rating: place.rating,
-        completed: place.completed,
+        place,
+        description,
+        what,
+        when,
+        who,
+        rating,
+        completed,
     });
     return Place.find({ description: place.description }).then(results => {
         if (results.length === 0) {
