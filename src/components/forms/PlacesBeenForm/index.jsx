@@ -6,10 +6,7 @@ const PlacesBeenForm = () => (
             <h1>Enter A Magical Place You Have Been!</h1>
             <h4>Let history show your adventure!!</h4>
         </div>
-        <p id="failure">Oopsie...Adventure not sent.</p>
-        <p id="success">Your adventure was saved successfully. Memories made!</p>
-
-        <form method="post" action="/">
+        <form>
             <div>
                 <label htmlFor="placesBeen">
                     <span>Place I Visted</span>
