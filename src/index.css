@@ -190,7 +190,7 @@ h4 {
 
 /* Make form look nice on smaller screens */
 @media only screen and (max-width: 31.25rem) {
-  #places-form{
+  #places-form {
      left: 3%;
      margin-right: 3%;
      width: 88%;
