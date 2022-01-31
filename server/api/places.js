@@ -57,8 +57,8 @@ Places.get('/been', (req, res) => {
 });
 
 Places.put('/update', (req, res) => {
-    const changeId = Object.keys(req.body);
-    db.updatePlaceBeen(changeId)
+    const updateId = Object.keys(req.body);
+    db.updatePlaceBeen(updateId)
         .then(response => {
             console.info(response, 'response in update placesIWantToGo api/places');
             res.status(201).send(response);
@@ -66,6 +66,19 @@ Places.put('/update', (req, res) => {
         .catch(error => {
             res.status(500).json(JSON.stringify({ results: 'Okay' }));
             console.error(error, 'error update in placeBeen api/places');
+        });
+});
+
+Places.delete(`/delete`, (req, res) => {
+    const deleteId = Object.values(req.body);
+    db.deletePlaceBeen(deleteId)
+        .then(response => {
+            console.info(response, 'response in deleting placesIWantToGo api/places');
+            res.status(201).send(response);
+        })
+        .catch(error => {
+            res.status(500).json(JSON.stringify({ results: 'Okay' }));
+            console.error(error, 'error deleting in placeBeen api/places');
         });
 });
 
