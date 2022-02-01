@@ -2,10 +2,12 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import PlacesGoForm from '../../forms/PlacesGoForm';
 
+const DOMAIN = process.env.REACT_APP_DOMAIN;
+
 const PlacesIWantToGo = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8080/api/places').then(result => {
+        axios.get(`${DOMAIN}api/places`).then(result => {
             setData(result.data);
         });
     }, []);
@@ -41,7 +43,7 @@ const PlacesIWantToGo = () => {
                         </tbody>
                     ))}
                 </table>
-                <PlacesGoForm />
+                <PlacesGoForm setData={setData} />
             </div>
         </>
     );
