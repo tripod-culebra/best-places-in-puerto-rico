@@ -23,9 +23,7 @@ const PlacesGoForm = ({ setData }) => {
             data: { formData },
         })
             .then(res => {
-                axios.get(`${DOMAIN}api/places`).then(result => {
-                    setData(result.data);
-                });
+                axios.get(`${DOMAIN}api/places`).then(result => setData(result.data));
                 console.info(res, 'Success: Form Saved');
             })
             .catch(error => console.error(error, 'Error: Form Not Saved'));
