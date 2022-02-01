@@ -5,8 +5,8 @@ const DB_URI = `mongodb://localhost/${DATABASE}`;
 
 mongoose
     .connect(DB_URI, { useNewUrlParser: true })
-    .then(() => console.info('Connected to database'))
-    .catch(err => console.error('Failed to connect to database', err));
+    .then(() => console.info('Success: Connected To Database'))
+    .catch(err => console.error(err, 'Error: Failed To Connect To Database'));
 
 const placesSchema = new mongoose.Schema({
     place: String,
@@ -32,9 +32,9 @@ const savePlace = newPlace => {
         rating,
         completed,
     });
-    return Place.find({ description: place.description }).then(results => {
+    return Place.find({ place }).then(results => {
         if (results.length === 0) {
-            savedPlace.save(place);
+            savedPlace.save(newPlace);
         }
     });
 };
@@ -46,10 +46,10 @@ const getTopPlaces = () =>
             .limit(50)
             .exec((error, results) => {
                 if (error) {
-                    console.error(error, 'error in getting top 25 results db/index.js!');
+                    console.error(error, 'Error: Place Not Found');
                     reject(error);
                 } else {
-                    console.info('found top 25 results in db/index.js!');
+                    console.info('Success: Place Found');
                     resolve(results);
                 }
             });
@@ -62,15 +62,17 @@ const getTopPlacesBeen = () =>
             .limit(50)
             .exec((error, results) => {
                 if (error) {
-                    console.error(error, 'error in getting top 25 results db/index.js!');
+                    console.error(error, 'Error: Place Not Found');
                     reject(error);
                 } else {
-                    console.info('found top 25 results in db/index.js!');
+                    console.info('Success: Place Found');
                     resolve(results);
                 }
             });
     });
 
-module.exports.savePlace = savePlace;
-module.exports.getTopPlaces = getTopPlaces;
-module.exports.getTopPlacesBeen = getTopPlacesBeen;
+module.exports = {
+    savePlace,
+    getTopPlaces,
+    getTopPlacesBeen,
+};
