@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import propTypes from 'prop-types';
 
-const PlacesGoForm = () => {
+const DOMAIN = process.env.REACT_APP_DOMAIN;
+
+const PlacesGoForm = ({ setData }) => {
     const [formData, setFormData] = useState({
         place: '',
         description: '',
@@ -14,17 +17,18 @@ const PlacesGoForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.info(formData, 'form data in handlesubmit');
         axios({
             method: 'post',
-            url: 'http://localhost:8080/api/places',
+            url: `${DOMAIN}api/places`,
             data: { formData },
         })
             .then(res => {
-                window.location.reload(false);
-                console.info(res, 'submitted successfully');
+                axios.get(`${DOMAIN}api/places`).then(result => {
+                    setData(result.data);
+                });
+                console.info(res, 'Success: Form Saved');
             })
-            .catch(error => console.error(error, 'error submitting form'));
+            .catch(error => console.error(error, 'Error: Form Not Saved'));
     };
 
     return (
@@ -113,13 +117,17 @@ const PlacesGoForm = () => {
                     </label>
                 </div>
                 <div>
-                    <button name="submit" type="submit" id="submit">
+                    <button name="submit" type="submit">
                         SAVE WHERE TO GO
                     </button>
                 </div>
             </form>
         </div>
     );
+};
+
+PlacesGoForm.propTypes = {
+    setData: propTypes.func.isRequired,
 };
 
 export default PlacesGoForm;
