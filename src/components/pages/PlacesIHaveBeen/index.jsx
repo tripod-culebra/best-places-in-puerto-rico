@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PlacesBeenForm from '../../forms/PlacesBeenForm';
 
+const DOMAIN = process.env.REACT_APP_DOMAIN;
+
 const PlacesIHaveBeen = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8080/api/places/been').then(result => {
+        axios.get(`${DOMAIN}api/places/been`).then(result => {
             setData(result.data);
         });
     }, []);
@@ -38,7 +40,7 @@ const PlacesIHaveBeen = () => {
                     ))}
                 </table>
             </div>
-            <PlacesBeenForm />
+            <PlacesBeenForm setData={setData} />
         </div>
     );
 };
