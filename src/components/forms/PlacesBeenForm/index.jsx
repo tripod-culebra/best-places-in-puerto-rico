@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import propTypes from 'prop-types';
 
-const PlacesBeenForm = () => {
+const DOMAIN = process.env.REACT_APP_DOMAIN;
+
+const PlacesBeenForm = ({ setData }) => {
     const [formData, setFormData] = useState({
         place: '',
         description: '',
@@ -14,17 +17,18 @@ const PlacesBeenForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.info(formData, 'form data in PlacesBeen handlesubmit');
         axios({
             method: 'post',
-            url: 'http://localhost:8080/api/places/been',
+            url: `${DOMAIN}api/places/been`,
             data: { formData },
         })
             .then(res => {
-                window.location.reload(false);
-                console.info(res, 'submitted PlacesBeen successfully');
+                axios.get(`${DOMAIN}api/places/been`).then(result => {
+                    setData(result.data);
+                });
+                console.info(res, 'Success: Form Saved');
             })
-            .catch(error => console.error(error, 'error submitting PlacesBeen form'));
+            .catch(error => console.error(error, 'Error: Form Not Saved'));
     };
 
     return (
@@ -107,13 +111,17 @@ const PlacesBeenForm = () => {
                     </label>
                 </div>
                 <div>
-                    <button name="submit" type="submit" id="submit">
+                    <button name="submit" type="submit">
                         SAVE THE PLACE YOU HAVE BEEN
                     </button>
                 </div>
             </form>
         </div>
     );
+};
+
+PlacesBeenForm.propTypes = {
+    setData: propTypes.func.isRequired,
 };
 
 export default PlacesBeenForm;
