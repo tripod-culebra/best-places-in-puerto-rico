@@ -26,8 +26,8 @@ const PlacesIHaveBeen = () => {
                             <th>Rating</th>
                         </tr>
                     </thead>
-                    {data.map(({ place, description, what, when, who, rating, _id }) => (
-                        <tbody key={_id}>
+                    {data.map(({ place, description, what, when, who, rating, _id: id }) => (
+                        <tbody key={id}>
                             <tr>
                                 <td>{place}</td>
                                 <td>{description}</td>
