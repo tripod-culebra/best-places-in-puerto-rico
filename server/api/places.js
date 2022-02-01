@@ -7,13 +7,12 @@ Places.post('/', (req, res) =>
     db
         .savePlace(req.body.formData)
         .then(results => {
-            console.info(results, 'results in post placesIWantToGo api/places');
             res.send(results);
             res.status(201);
         })
         .catch(error => {
             res.sendStatus(500);
-            console.error(error, 'error getting placesIWantToGo api/places');
+            console.error(error, 'Error: Saving Place');
         })
 );
 
@@ -21,13 +20,12 @@ Places.post('/been', (req, res) =>
     db
         .savePlace(req.body.formData)
         .then(results => {
-            console.info(results, 'results in post placesBeen api/places');
             res.send(results);
             res.status(201);
         })
         .catch(error => {
             res.sendStatus(500);
-            console.error(error, 'error getting placesBeen api/places');
+            console.error(error, 'Error: Saving Place');
         })
 );
 
@@ -35,12 +33,11 @@ Places.get('/', (req, res) =>
     db
         .getTopPlaces()
         .then(results => {
-            console.info(results, 'results in get placesIWantToGo api/places');
             res.status(201).send(results);
         })
         .catch(error => {
             res.status(500).json(JSON.stringify({ results: 'Okay' }));
-            console.error(error, 'error getting repos repos.js');
+            console.error(error, 'Error: Getting Places');
         })
 );
 
@@ -48,12 +45,11 @@ Places.get('/been', (req, res) =>
     db
         .getTopPlacesBeen()
         .then(results => {
-            console.info(results, 'results in get placesIWantToGo api/places');
             res.status(201).send(results);
         })
         .catch(error => {
             res.status(500).json(JSON.stringify({ results: 'Okay' }));
-            console.error(error, 'error getting repos repos.js');
+            console.error(error, 'Error: Getting Places');
         })
 );
 
