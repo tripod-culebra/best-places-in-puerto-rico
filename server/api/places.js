@@ -32,9 +32,7 @@ Places.post('/been', (req, res) =>
 Places.get('/', (req, res) =>
     db
         .getTopPlaces()
-        .then(results => {
-            res.status(201).send(results);
-        })
+        .then(results => res.status(201).send(results))
         .catch(error => {
             res.status(500).json(JSON.stringify({ results: 'Okay' }));
             console.error(error, 'Error: Getting Places');
@@ -44,9 +42,7 @@ Places.get('/', (req, res) =>
 Places.get('/been', (req, res) =>
     db
         .getTopPlacesBeen()
-        .then(results => {
-            res.status(201).send(results);
-        })
+        .then(results => res.status(201).send(results))
         .catch(error => {
             res.status(500).json(JSON.stringify({ results: 'Okay' }));
             console.error(error, 'Error: Getting Places');
