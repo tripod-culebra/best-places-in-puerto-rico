@@ -1,43 +1,48 @@
-import React, { useState } from 'react';
-import backgroundImage from '../../../assets/PRArecibo.jpeg';
-import PlacesGoForm from '../../forms/PlacesGoForm';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import PlacesBeenForm from '../../forms/PlacesBeenForm';
 
-const PlacesIWantToGo = () => {
-    const { data } = useState([]);
+const DOMAIN = process.env.REACT_APP_DOMAIN;
+
+const PlacesIHaveBeen = () => {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        axios.get(`${DOMAIN}api/places/been`).then(result => {
+            setData(result.data);
+        });
+    }, []);
     return (
-        <>
-            <img src={backgroundImage} className="background" alt="Arecibo" />
-            <h1 className="header">Places I Want To Go!</h1>
+        <div>
+            <h1 className="header">Places I Have Been!</h1>
             <div>
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Places I Want To Go To</th>
+                            <th>Places I Have Visted</th>
                             <th>Description of Location</th>
-                            <th>What I Want To Do</th>
-                            <th>When I Want To Go</th>
-                            <th>With Who?</th>
+                            <th>What I Did</th>
+                            <th>When I Went</th>
+                            <th>Who Went?</th>
                             <th>Rating</th>
-                            <th>Completed?</th>
                         </tr>
                     </thead>
-                    {data.map(({ places, description, what, when, who, rating, id }) => (
+                    {data.map(({ place, description, what, when, who, rating, _id: id }) => (
                         <tbody key={id}>
                             <tr>
-                                <td>{places}</td>
+                                <td>{place}</td>
                                 <td>{description}</td>
                                 <td>{what}</td>
-                                <td>{when}</td>
+                                <td>{when.slice(0, 10)}</td>
                                 <td>{who}</td>
                                 <td>{rating}</td>
                             </tr>
                         </tbody>
                     ))}
                 </table>
-                <PlacesGoForm />
             </div>
-        </>
+            <PlacesBeenForm setData={setData} />
+        </div>
     );
 };
 
-export default PlacesIWantToGo;
+export default PlacesIHaveBeen;
