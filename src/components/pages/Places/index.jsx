@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import propTypes from 'prop-types';
+import moment from 'moment';
 import PlacesBeenForm from '../../forms/PlacesBeenForm';
 import PlacesGoForm from '../../forms/PlacesGoForm';
 
@@ -12,14 +13,14 @@ const Places = ({ placeSelector }) => {
         axios
             .get(`${DOMAIN}api/places`)
             .then(result => setData(result.data))
-            .catch(error => console.error(error, 'Error: Data Not Found'));
+            .catch(error => console.error(error, 'Error: Places Not Found'));
     }, []);
 
     const handlePlacesBeenChange = _id => {
         axios
             .delete(`${DOMAIN}api/places/delete`, { data: { _id } })
             .then(response => {
-                axios.get(`${DOMAIN}api/places/been`).then(result => setData(result.data));
+                axios.get(`${DOMAIN}api/places`).then(result => setData(result.data));
                 console.info(response, 'Success: Deleted Place');
             })
             .catch(error => {
@@ -31,7 +32,7 @@ const Places = ({ placeSelector }) => {
         axios
             .put(`${DOMAIN}api/places/update`, _id)
             .then(response => {
-                console.info(response, 'Success: Updating Place');
+                console.info(response, 'Success: Updated Place');
                 axios.get(`${DOMAIN}api/places`).then(result => setData(result.data));
             })
             .catch(error => {
@@ -78,24 +79,26 @@ const Places = ({ placeSelector }) => {
                                 <td>{place}</td>
                                 <td>{description}</td>
                                 <td>{what}</td>
-                                <td>{when.slice(0, 10)}</td>
+                                <td>{moment(when).format('MMMM Do YYYY')}</td>
                                 <td>{who}</td>
                                 {placeSelector === 'PlacesBeen' && <td>{rating}</td>}
                                 <td>
                                     {placeSelector === 'PlacesBeen' ? (
                                         <button
                                             type="button"
-                                            className="delete-button"
+                                            className="places-button delete-button"
                                             onClick={() => handlePlacesBeenChange(id)}
                                         >
                                             Delete
                                         </button>
                                     ) : (
-                                        <input
-                                            type="checkbox"
-                                            className="check-box"
-                                            onChange={() => handlePlacesGoChange(id)}
-                                        />
+                                        <button
+                                            type="button"
+                                            className="places-button update-button"
+                                            onClick={() => handlePlacesGoChange(id)}
+                                        >
+                                            Delete
+                                        </button>
                                     )}
                                 </td>
                             </tr>
@@ -113,7 +116,7 @@ const Places = ({ placeSelector }) => {
 };
 
 Places.propTypes = {
-    placeSelector: propTypes.func.isRequired,
+    placeSelector: propTypes.string.isRequired,
 };
 
 export default Places;
