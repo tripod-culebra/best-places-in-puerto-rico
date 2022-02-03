@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import backgroundImage from '../../../assets/PROceanPark.jpeg';
 import PlacesBeenForm from '../../forms/PlacesBeenForm';
 
 const PlacesIHaveBeen = () => {
-    const { data } = useState([]);
+    const [data] = useState([]);
     return (
         <>
-            <img src={backgroundImage} className="background" alt="Ocean Park" />
             <h1 className="header">Places I Have Been!</h1>
             <div>
                 <table className="table">
