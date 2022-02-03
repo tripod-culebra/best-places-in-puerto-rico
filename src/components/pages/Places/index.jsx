@@ -1,76 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import PlacesBeenForm from '../../forms/PlacesBeenForm';
 import PlacesGoForm from '../../forms/PlacesGoForm';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const Places = ({ placeSelector }) => {
+const Places = ({ title, tableCols, isChangeDelete, showRating, showBeenForm }) => {
     const [data, setData] = useState([]);
-    useEffect(() => {
+
+    const getPlacesData = () =>
         axios
-            .get(`${DOMAIN}api/places`)
+            .get(`${DOMAIN}/api/places`)
             .then(result => setData(result.data))
             .catch(error => console.error(error, 'Error: Places Not Found'));
-    }, []);
 
-    const handlePlacesBeenChange = _id => {
-        axios
-            .delete(`${DOMAIN}api/places/delete`, { data: { _id } })
-            .then(response => {
-                axios.get(`${DOMAIN}api/places`).then(result => setData(result.data));
-                console.info(response, 'Success: Deleted Place');
-            })
-            .catch(error => {
-                console.error(error, 'Error: Deleting Place');
-            });
-    };
+    useEffect(getPlacesData, []);
 
-    const handlePlacesGoChange = _id => {
+    const handlePlacesDelete = id =>
         axios
-            .put(`${DOMAIN}api/places/update`, _id)
-            .then(response => {
-                console.info(response, 'Success: Updated Place');
-                axios.get(`${DOMAIN}api/places`).then(result => setData(result.data));
-            })
-            .catch(error => {
-                console.error(error, 'Error: Updating Place');
-            });
-    };
+            .delete(`${DOMAIN}/api/places/delete`, id)
+            .then(getPlacesData)
+            .catch(error => console.error(error, 'Error: Deleting Place'));
+
+    const handlePlacesUpdate = id =>
+        axios
+            .put(`${DOMAIN}/api/places/update`, id)
+            .then(getPlacesData)
+            .catch(error => console.error(error, 'Error: Updating Place'));
 
     return (
         <div>
-            {placeSelector === 'PlacesBeen' ? (
-                <h1 className="header">Places I Have Been!</h1>
-            ) : (
-                <h1 className="header">Places I Want To Go!</h1>
-            )}
+            <h1 className="header">{title}</h1>
             <div>
                 <table className="table">
                     <thead>
                         <tr>
-                            {placeSelector === 'PlacesBeen' ? (
-                                <th>Places I Have Visted</th>
-                            ) : (
-                                <th>Places I Want To Go To</th>
-                            )}
-                            <th>Description of Location</th>
-                            {placeSelector === 'PlacesBeen' ? (
-                                <th>What I Did</th>
-                            ) : (
-                                <th>What I Want To Do</th>
-                            )}
-                            {placeSelector === 'PlacesBeen' ? (
-                                <th>When I Went</th>
-                            ) : (
-                                <th>When I Want To Go</th>
-                            )}
-                            {placeSelector === 'PlacesBeen' ? <th>Who Went</th> : <th>With Who</th>}
-                            {placeSelector === 'PlacesBeen' && <th>Rating</th>}
-                            {placeSelector === 'PlacesBeen' && <th>Delete?</th>}
-                            {placeSelector === 'PlacesGo' && <th>Completed?</th>}
+                            {tableCols.map(tableCol => (
+                                <th>{tableCol}</th>
+                            ))}
                         </tr>
                     </thead>
                     {data.map(({ place, description, what, when, who, rating, _id: id }) => (
@@ -81,13 +50,13 @@ const Places = ({ placeSelector }) => {
                                 <td>{what}</td>
                                 <td>{moment(when).format('MMMM Do YYYY')}</td>
                                 <td>{who}</td>
-                                {placeSelector === 'PlacesBeen' && <td>{rating}</td>}
+                                {showRating && <td>{rating}</td>}
                                 <td>
-                                    {placeSelector === 'PlacesBeen' ? (
+                                    {isChangeDelete ? (
                                         <button
                                             type="button"
                                             className="places-button delete-button"
-                                            onClick={() => handlePlacesBeenChange(id)}
+                                            onClick={() => handlePlacesDelete(id)}
                                         >
                                             Delete
                                         </button>
@@ -95,9 +64,9 @@ const Places = ({ placeSelector }) => {
                                         <button
                                             type="button"
                                             className="places-button update-button"
-                                            onClick={() => handlePlacesGoChange(id)}
+                                            onClick={() => handlePlacesUpdate(id)}
                                         >
-                                            Delete
+                                            Completed
                                         </button>
                                     )}
                                 </td>
@@ -106,7 +75,7 @@ const Places = ({ placeSelector }) => {
                     ))}
                 </table>
             </div>
-            {placeSelector === 'PlacesBeen' ? (
+            {showBeenForm ? (
                 <PlacesBeenForm setData={setData} />
             ) : (
                 <PlacesGoForm setData={setData} />
@@ -116,7 +85,11 @@ const Places = ({ placeSelector }) => {
 };
 
 Places.propTypes = {
-    placeSelector: propTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    tableCols: PropTypes.instanceOf(Array).isRequired,
+    isChangeDelete: PropTypes.bool.isRequired,
+    showRating: PropTypes.bool.isRequired,
+    showBeenForm: PropTypes.bool.isRequired,
 };
 
 export default Places;
