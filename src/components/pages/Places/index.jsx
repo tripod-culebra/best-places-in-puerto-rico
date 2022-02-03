@@ -9,7 +9,6 @@ const DOMAIN = process.env.REACT_APP_DOMAIN;
 
 const Places = ({ title, tableCols, isChangeDelete, showRating, showBeenForm }) => {
     const [data, setData] = useState([]);
-
     const getPlacesData = () =>
         axios
             .get(`${DOMAIN}/api/places`)
