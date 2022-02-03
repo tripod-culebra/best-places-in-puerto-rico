@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import propTypes from 'prop-types';
 import styles from './index.module.css';
 
-const Navbar = ({ setPlaceSelector }) => {
+const Navbar = () => {
     const navigate = useNavigate();
     const { logout } = useAuth0();
     const { home, placesBeen, placesGo, logoutCSS } = styles;
@@ -24,8 +23,7 @@ const Navbar = ({ setPlaceSelector }) => {
                 type="button"
                 className={placesGo}
                 onClick={() => {
-                    setPlaceSelector('PlacesGo');
-                    navigate('/Places');
+                    navigate('/PlacesIWantToGo');
                 }}
             >
                 Places I Want To Go!!
@@ -34,8 +32,7 @@ const Navbar = ({ setPlaceSelector }) => {
                 type="button"
                 className={placesBeen}
                 onClick={() => {
-                    setPlaceSelector('PlacesBeen');
-                    navigate('/Places');
+                    navigate('/PlacesIHaveBeen');
                 }}
             >
                 Places I Have Been!!
@@ -45,10 +42,6 @@ const Navbar = ({ setPlaceSelector }) => {
             </button>
         </nav>
     );
-};
-
-Navbar.propTypes = {
-    setPlaceSelector: propTypes.func.isRequired,
 };
 
 export default Navbar;
