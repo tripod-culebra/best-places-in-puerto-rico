@@ -215,6 +215,24 @@ button:hover {
   transition:background-color 0.3s ease-in-out;
 }
 
+.places-button {
+  width: 9rem;
+  height: 1rem;
+  border-radius: 0.8rem;
+  top: 0;
+  padding: 1rem 1rem;
+  margin: auto;
+  line-height: 0rem;
+  font-size: 1.1rem;
+}
+.delete-button {
+  background-color: #a04b4b;
+}
+
+.update-button {
+  background-color: #1fd5db;
+}
+
 .check-box {
   float: right;
   left: 20rem;
