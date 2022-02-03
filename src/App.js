@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import LoginButton from './components/LoginButton';
-import backgroundImage from './assets/PRCaboRojo.jpeg';
 import Home from './components/pages/Home';
 import PlacesIWantToGo from './components/pages/PlacesIWantToGo';
 import PlacesIHaveBeen from './components/pages/PlacesIHaveBeen';
@@ -11,6 +10,7 @@ import Navbar from './components/navbar';
 
 const App = () => {
     const { error, isAuthenticated, isLoading } = useAuth0();
+    const [backgroundImageType, setBackgroundImageType] = useState('');
 
     if (isLoading) return <div>Loading...</div>;
 
@@ -19,19 +19,20 @@ const App = () => {
     }
 
     return !isAuthenticated ? (
-        <>
-            <img src={backgroundImage} className="background" alt="Cabo Rojo" />
+        <div className="background background-login">
             <LoginButton />
-        </>
+        </div>
     ) : (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route path="/PlacesIWantToGo" element={<PlacesIWantToGo />} />
-                <Route path="/PlacesIHaveBeen" element={<PlacesIHaveBeen />} />
-            </Routes>
-        </Router>
+        <div className={`background background-${backgroundImageType}`}>
+            <Router>
+                <Navbar setBackgroundImageType={setBackgroundImageType} />
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path="/PlacesIWantToGo" element={<PlacesIWantToGo />} />
+                    <Route path="/PlacesIHaveBeen" element={<PlacesIHaveBeen />} />
+                </Routes>
+            </Router>
+        </div>
     );
 };
 
