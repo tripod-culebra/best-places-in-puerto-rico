@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import PlacesBeenForm from '../../forms/PlacesBeenForm';
-import PlacesGoForm from '../../forms/PlacesGoForm';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const Places = ({ title, tableCols, isChangeDelete, showRating, showBeenForm }) => {
+const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) => {
     const [data, setData] = useState([]);
     const getPlacesData = () =>
         axios
@@ -74,11 +72,7 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, showBeenForm }) 
                     ))}
                 </table>
             </div>
-            {showBeenForm ? (
-                <PlacesBeenForm setData={setData} />
-            ) : (
-                <PlacesGoForm setData={setData} />
-            )}
+            <PlacesForm setData={setData} />
         </div>
     );
 };
@@ -88,7 +82,7 @@ Places.propTypes = {
     tableCols: PropTypes.instanceOf(Array).isRequired,
     isChangeDelete: PropTypes.bool.isRequired,
     showRating: PropTypes.bool.isRequired,
-    showBeenForm: PropTypes.bool.isRequired,
+    PlacesForm: PropTypes.func.isRequired,
 };
 
 export default Places;
