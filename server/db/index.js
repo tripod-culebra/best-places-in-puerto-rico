@@ -70,8 +70,38 @@ const updatePlaceGo = id =>
         );
     });
 
+const getTopPlacesBeen = () =>
+    new Promise((resolve, reject) => {
+        Place.find({ completed: true })
+            .sort({ when: 1 })
+            .limit(50)
+            .exec((error, results) => {
+                if (error) {
+                    reject(error);
+                    console.error(error, 'Error: Getting Places');
+                } else {
+                    resolve(results);
+                }
+            });
+    });
+
+const deletePlaceBeen = id =>
+    new Promise((resolve, reject) => {
+        Place.deleteOne({ _id: id }, { new: true }).exec((error, results) => {
+            if (error) {
+                console.error(error, 'Error: Deleting Place');
+                reject(error);
+            } else {
+                console.info('Success: Deleted Place');
+                resolve(results);
+            }
+        });
+    });
+
 module.exports = {
     savePlace,
     getTopPlacesGo,
     updatePlaceGo,
+    getTopPlacesBeen,
+    deletePlaceBeen,
 };
