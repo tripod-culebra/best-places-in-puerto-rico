@@ -10,16 +10,30 @@ const Navbar = () => {
 
     return (
         <nav>
-            <button type="button" className={home} onClick={() => navigate('/')}>
+            <button
+                type="button"
+                className={home}
+                onClick={() => {
+                    navigate('/');
+                }}
+            >
                 Home
             </button>
-            <button type="button" className={placesGo} onClick={() => navigate('/PlacesIWantToGo')}>
+            <button
+                type="button"
+                className={placesGo}
+                onClick={() => {
+                    navigate('/PlacesIWantToGo');
+                }}
+            >
                 Places I Want To Go!!
             </button>
             <button
                 type="button"
                 className={placesBeen}
-                onClick={() => navigate('/PlacesIHaveBeen')}
+                onClick={() => {
+                    navigate('/PlacesIHaveBeen');
+                }}
             >
                 Places I Have Been!!
             </button>
