@@ -5,8 +5,10 @@ import './index.css';
 import LoginButton from './components/LoginButton';
 import backgroundImage from './assets/PRCaboRojo.jpeg';
 import Home from './components/pages/Home';
-import Places from './components/pages/Places';
 import Navbar from './components/navbar';
+import Places from './components/pages/Places';
+import PlacesGoForm from './components/forms/PlacesGoForm';
+import PlacesBeenForm from './components/forms/PlacesBeenForm';
 
 const App = () => {
     const { error, isAuthenticated, isLoading } = useAuth0();
@@ -42,7 +44,7 @@ const App = () => {
                             ]}
                             isChangeDelete={false}
                             showRating={false}
-                            showBeenForm={false}
+                            PlacesForm={PlacesGoForm}
                         />
                     }
                 />
@@ -62,7 +64,7 @@ const App = () => {
                             ]}
                             isChangeDelete
                             showRating
-                            showBeenForm
+                            PlacesForm={PlacesBeenForm}
                         />
                     }
                 />
