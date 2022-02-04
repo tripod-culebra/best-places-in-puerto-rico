@@ -227,11 +227,21 @@ button:hover {
   transition:background-color 0.3s ease-in-out;
 }
 
-.check-box {
-  float: right;
-  left: 20rem;
-  width: 2rem;
-  height: 2rem;
-  cursor: pointer;
-  box-shadow: 0 0.75rem 1rem 0 rgba(0,0,0,0.24), 0 1.063rem 3.125rem 0 rgba(0,0,0,0.19);
+.places-button {
+  width: 9rem;
+  height: 1rem;
+  border-radius: 0.8rem;
+  top: 0;
+  padding: 1rem 1rem;
+  margin: auto;
+  line-height: 0rem;
+  font-size: 1.1rem;
+}
+
+.delete-button {
+  background-color: #a04b4b;
+}
+
+.update-button {
+  background-color: #1fd5db;
 }

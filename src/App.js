@@ -4,13 +4,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import LoginButton from './components/LoginButton';
 import Home from './components/pages/Home';
-import PlacesIWantToGo from './components/pages/PlacesIWantToGo';
-import PlacesIHaveBeen from './components/pages/PlacesIHaveBeen';
 import Navbar from './components/navbar';
+import Places from './components/pages/Places';
+import PlacesGoForm from './components/forms/PlacesGoForm';
+import PlacesBeenForm from './components/forms/PlacesBeenForm';
 
 const App = () => {
     const { error, isAuthenticated, isLoading } = useAuth0();
-    const [backgroundImageType, setBackgroundImageType] = useState('');
+    const [backgroundImage, setBackgroundImage] = useState('');
 
     if (isLoading) return <div>Loading...</div>;
 
@@ -23,13 +24,50 @@ const App = () => {
             <LoginButton />
         </div>
     ) : (
-        <div className={`background background-${backgroundImageType}`}>
+        <div className={`background background-${backgroundImage}`}>
             <Router>
-                <Navbar setBackgroundImageType={setBackgroundImageType} />
+                <Navbar setBackgroundImage={setBackgroundImage} />
                 <Routes>
                     <Route exact path="/" element={<Home />} />
-                    <Route path="/PlacesIWantToGo" element={<PlacesIWantToGo />} />
-                    <Route path="/PlacesIHaveBeen" element={<PlacesIHaveBeen />} />
+                    <Route
+                        path="/PlacesIWantToGo"
+                        element={
+                            <Places
+                                title="Places I Want To Go!"
+                                tableCols={[
+                                    'Places I Want To Go To',
+                                    'Description',
+                                    'What I Want To Do',
+                                    'When I Want To Go',
+                                    'With Who',
+                                    'Completed?',
+                                ]}
+                                isChangeDelete={false}
+                                showRating={false}
+                                PlacesForm={PlacesGoForm}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/PlacesIHaveBeen"
+                        element={
+                            <Places
+                                title="Places I Have Been!"
+                                tableCols={[
+                                    'Places I Have Visted',
+                                    'Description',
+                                    'What I Did',
+                                    'When I Went',
+                                    'Who Went',
+                                    'Rating',
+                                    'Delete?',
+                                ]}
+                                isChangeDelete
+                                showRating
+                                PlacesForm={PlacesBeenForm}
+                            />
+                        }
+                    />
                 </Routes>
             </Router>
         </div>

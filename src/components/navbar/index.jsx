@@ -4,7 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import propTypes from 'prop-types';
 import styles from './index.module.css';
 
-const Navbar = ({ setBackgroundImageType }) => {
+const Navbar = ({ setBackgroundImage }) => {
     const navigate = useNavigate();
     const { logout } = useAuth0();
     const { home, placesBeen, placesGo, logoutCSS } = styles;
@@ -15,7 +15,7 @@ const Navbar = ({ setBackgroundImageType }) => {
                 type="button"
                 className={home}
                 onClick={() => {
-                    setBackgroundImageType('default');
+                    setBackgroundImage('default');
                     navigate('/');
                 }}
             >
@@ -25,7 +25,7 @@ const Navbar = ({ setBackgroundImageType }) => {
                 type="button"
                 className={placesGo}
                 onClick={() => {
-                    setBackgroundImageType('PlacesIWantToGo');
+                    setBackgroundImage('PlacesIWantToGo');
                     navigate('/PlacesIWantToGo');
                 }}
             >
@@ -35,7 +35,7 @@ const Navbar = ({ setBackgroundImageType }) => {
                 type="button"
                 className={placesBeen}
                 onClick={() => {
-                    setBackgroundImageType('PlacesIHaveBeen');
+                    setBackgroundImage('PlacesIHaveBeen');
                     navigate('/PlacesIHaveBeen');
                 }}
             >
@@ -49,7 +49,7 @@ const Navbar = ({ setBackgroundImageType }) => {
 };
 
 Navbar.propTypes = {
-    setBackgroundImageType: propTypes.func.isRequired,
+    setBackgroundImage: propTypes.func.isRequired,
 };
 
 export default Navbar;
