@@ -38,6 +38,28 @@ Places.put('/update', (req, res) => {
         });
 });
 
+Places.get('/been', (req, res) =>
+    db
+        .getTopPlacesBeen()
+        .then(results => res.status(201).send(results))
+        .catch(error => {
+            res.status(500);
+            console.error(error, 'Error: Getting Places');
+        })
+);
+
+Places.delete(`/delete`, (req, res) => {
+    const deleteId = Object.values(req.body);
+    db.deletePlaceBeen(deleteId)
+        .then(response => {
+            res.status(201).send(response);
+        })
+        .catch(error => {
+            res.status(500);
+            console.error(error, 'Error: Deleting Place I Have Been');
+        });
+});
+
 module.exports = {
     Places,
 };
