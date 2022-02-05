@@ -92,7 +92,6 @@ const deletePlaceBeen = id =>
                 console.error(error, 'Error: Deleting Place');
                 reject(error);
             } else {
-                console.info('Success: Deleted Place');
                 resolve(results);
             }
         });
