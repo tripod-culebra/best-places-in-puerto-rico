@@ -5,24 +5,17 @@ import moment from 'moment';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, isPlaceGo }) => {
+const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, placeEndPoint }) => {
     const [data, setData] = useState([]);
 
     const getPlaces = () => {
-        if (isPlaceGo) {
-            axios
-                .get(`${DOMAIN}/api/places`)
-                .then(result => setData(result.data))
-                .catch(error => console.error(error, 'Error: Places Not Found'));
-        } else {
-            axios
-                .get(`${DOMAIN}/api/places/been`)
-                .then(result => setData(result.data))
-                .catch(error => console.error(error, 'Error: Places Not Found'));
-        }
+        axios
+            .get(`${DOMAIN}/api/places${placeEndPoint}`)
+            .then(result => setData(result.data))
+            .catch(error => console.error(error, 'Error: Places Not Found'));
     };
 
-    useEffect(getPlaces, [isPlaceGo]);
+    useEffect(getPlaces, [placeEndPoint]);
 
     const handlePlacesDelete = id =>
         axios
@@ -92,7 +85,7 @@ Places.propTypes = {
     isChangeDelete: PropTypes.bool.isRequired,
     showRating: PropTypes.bool.isRequired,
     PlacesForm: PropTypes.func.isRequired,
-    isPlaceGo: PropTypes.bool.isRequired,
+    placeEndPoint: PropTypes.string.isRequired,
 };
 
 export default Places;
