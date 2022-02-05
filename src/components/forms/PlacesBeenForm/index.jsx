@@ -19,7 +19,7 @@ const PlacesBeenForm = ({ setData }) => {
         e.preventDefault();
         axios({
             method: 'post',
-            url: `${DOMAIN}/api/places/been`,
+            url: `${DOMAIN}/api/places/save`,
             data: { formData },
         })
             .then(() => axios.get(`${DOMAIN}/api/places/been`).then(result => setData(result.data)))
