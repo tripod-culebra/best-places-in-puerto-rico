@@ -5,26 +5,35 @@ import moment from 'moment';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) => {
+const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, isPlaceGo }) => {
     const [data, setData] = useState([]);
-    const getPlacesData = () =>
-        axios
-            .get(`${DOMAIN}/api/places`)
-            .then(result => setData(result.data))
-            .catch(error => console.error(error, 'Error: Places Not Found'));
 
-    useEffect(getPlacesData, []);
+    const getPlaces = () => {
+        if (isPlaceGo) {
+            axios
+                .get(`${DOMAIN}/api/places`)
+                .then(result => setData(result.data))
+                .catch(error => console.error(error, 'Error: Places Not Found'));
+        } else {
+            axios
+                .get(`${DOMAIN}/api/places/been`)
+                .then(result => setData(result.data))
+                .catch(error => console.error(error, 'Error: Places Not Found'));
+        }
+    };
+
+    useEffect(getPlaces, [isPlaceGo]);
 
     const handlePlacesDelete = id =>
         axios
-            .delete(`${DOMAIN}/api/places/delete`, id)
-            .then(getPlacesData)
+            .delete(`${DOMAIN}/api/places/delete`, { data: { id } })
+            .then(getPlaces)
             .catch(error => console.error(error, 'Error: Deleting Place'));
 
     const handlePlacesUpdate = id =>
         axios
             .put(`${DOMAIN}/api/places/update`, id)
-            .then(getPlacesData)
+            .then(getPlaces)
             .catch(error => console.error(error, 'Error: Updating Place'));
 
     return (
@@ -83,6 +92,7 @@ Places.propTypes = {
     isChangeDelete: PropTypes.bool.isRequired,
     showRating: PropTypes.bool.isRequired,
     PlacesForm: PropTypes.func.isRequired,
+    isPlaceGo: PropTypes.bool.isRequired,
 };
 
 export default Places;
