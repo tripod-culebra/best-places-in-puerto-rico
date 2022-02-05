@@ -45,7 +45,7 @@ const App = () => {
                                 isChangeDelete={false}
                                 showRating={false}
                                 PlacesForm={PlacesGoForm}
-                                isPlaceGo
+                                placeEndPoint="/"
                             />
                         }
                     />
@@ -66,7 +66,7 @@ const App = () => {
                                 isChangeDelete
                                 showRating
                                 PlacesForm={PlacesBeenForm}
-                                isPlaceGo={false}
+                                placeEndPoint="/been"
                             />
                         }
                     />
