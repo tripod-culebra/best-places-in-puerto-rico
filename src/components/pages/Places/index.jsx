@@ -35,7 +35,7 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) =>
                     <thead>
                         <tr>
                             {tableCols.map(tableCol => (
-                                <th key={Math.random()}>{tableCol}</th>
+                                <th key={tableCol}>{tableCol}</th>
                             ))}
                         </tr>
                     </thead>
