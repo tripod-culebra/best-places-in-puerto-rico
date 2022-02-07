@@ -18,7 +18,6 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start:prod": "node ./server/index.js",
     "dev:server": "nodemon index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
