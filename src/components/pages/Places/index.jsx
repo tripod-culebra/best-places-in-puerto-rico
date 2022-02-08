@@ -1,31 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-const DOMAIN = process.env.REACT_APP_DOMAIN;
-
 const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) => {
     const [data, setData] = useState([]);
-    const getPlacesData = () =>
-        axios
-            .get(`${DOMAIN}/api/places`)
-            .then(result => setData(result.data))
-            .catch(error => console.error(error, 'Error: Places Not Found'));
-
-    useEffect(getPlacesData, []);
-
-    const handlePlacesDelete = id =>
-        axios
-            .delete(`${DOMAIN}/api/places/delete`, id)
-            .then(getPlacesData)
-            .catch(error => console.error(error, 'Error: Deleting Place'));
-
-    const handlePlacesUpdate = id =>
-        axios
-            .put(`${DOMAIN}/api/places/update`, id)
-            .then(getPlacesData)
-            .catch(error => console.error(error, 'Error: Updating Place'));
 
     return (
         <div>
@@ -53,7 +31,6 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) =>
                                         <button
                                             type="button"
                                             className="places-button delete-button"
-                                            onClick={() => handlePlacesDelete(id)}
                                         >
                                             Delete
                                         </button>
@@ -61,7 +38,6 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) =>
                                         <button
                                             type="button"
                                             className="places-button update-button"
-                                            onClick={() => handlePlacesUpdate(id)}
                                         >
                                             Completed
                                         </button>
