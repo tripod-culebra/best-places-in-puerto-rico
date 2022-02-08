@@ -7,6 +7,6 @@ dotenv.config({
 
 const { app } = require('./app');
 
-const PORT = process.env.PORT || 4000;
+const { PORT } = process.env;
 
 app.listen(PORT, () => console.info(`Server listening on :${PORT}`));
