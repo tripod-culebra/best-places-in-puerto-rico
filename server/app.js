@@ -7,6 +7,7 @@ const app = express();
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../build')));
 }
+
 app.use('/api/*', (req, res) => {
     res.send([]);
 });
