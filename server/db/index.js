@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const DATABASE = 'PRplaces';
+const { DATABASE } = process.env;
 const DB_URI = `mongodb://localhost/${DATABASE}`;
 
 mongoose
