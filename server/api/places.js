@@ -19,7 +19,7 @@ Places.post('/save', (req, res) =>
 Places.get('/', (req, res) =>
     db
         .getTopPlacesGo()
-        .then(results => res.status(201).send(results))
+        .then(results => res.status(200).send(results))
         .catch(error => {
             res.status(500);
             console.error(error, 'Error: Getting Places');
@@ -38,6 +38,4 @@ Places.put('/update', (req, res) => {
         });
 });
 
-module.exports = {
-    Places,
-};
+module.exports = { Places };
