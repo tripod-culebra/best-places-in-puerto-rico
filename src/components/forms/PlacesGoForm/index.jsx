@@ -6,7 +6,7 @@ const DOMAIN = process.env.REACT_APP_DOMAIN;
 
 const PlacesGoForm = ({ setData }) => {
     const [formData, setFormData] = useState({
-        place: '',
+        placeName: '',
         description: '',
         what: '',
         when: '',
