@@ -37,8 +37,8 @@ const PlacesGoForm = ({ setData }) => {
                     <label htmlFor="PlacesIWantToGo">
                         <span>Place I Want To Go To</span>
                         <input
-                            onChange={e => setFormData({ ...formData, place: e.target.value })}
-                            value={formData.place}
+                            onChange={e => setFormData({ ...formData, placeName: e.target.value })}
+                            value={formData.placeName}
                             type="text"
                             placeholder="Enter Place I Want To Go"
                             id="PlacesIWantToGo"
