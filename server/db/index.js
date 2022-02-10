@@ -20,8 +20,8 @@ const placesSchema = new mongoose.Schema({
 
 const Place = mongoose.model('Place', placesSchema);
 
-const savePlace = newPlace => {
-    const { place, description, what, when, who, rating, completed } = newPlace;
+const savePlace = placeName => {
+    const { place, description, what, when, who, rating, completed } = placeName;
     const savedPlace = new Place({
         place,
         description,
@@ -32,11 +32,7 @@ const savePlace = newPlace => {
         completed,
     });
     return Place.find({ place })
-        .then(results => {
-            if (results.length === 0) {
-                savedPlace.save(newPlace);
-            }
-        })
+        .then(results => !results.length && savedPlace.save(placeName))
         .catch(error => console.error(error, 'Error: Saving Place'));
 };
 
