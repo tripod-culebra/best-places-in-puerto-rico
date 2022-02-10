@@ -41,33 +41,16 @@ const savePlace = newPlace => {
 };
 
 const getTopPlacesGo = () =>
-    new Promise((resolve, reject) => {
-        Place.find({ completed: false })
-            .sort({ when: 1 })
-            .limit(50)
-            .exec((error, results) => {
-                if (error) {
-                    reject(error);
-                    console.error(error, 'Error: Getting Places');
-                } else {
-                    resolve(results);
-                }
-            });
-    });
+    Place.find({ completed: false })
+        .sort({ when: 1 })
+        .limit(50)
+        .exec()
+        .catch(error => console.error(error, 'Error: Getting Places'));
 
 const updatePlaceGo = id =>
-    new Promise((resolve, reject) => {
-        Place.findOneAndUpdate({ _id: id }, { completed: true }, { new: true }).exec(
-            (error, results) => {
-                if (error) {
-                    reject(error);
-                    console.error(error, 'Error: Updating Place');
-                } else {
-                    resolve(results);
-                }
-            }
-        );
-    });
+    Place.findOneAndUpdate({ _id: id }, { completed: true }, { new: true })
+        .exec()
+        .catch(error => console.error(error, 'Error: Updating Place'));
 
 module.exports = {
     savePlace,
