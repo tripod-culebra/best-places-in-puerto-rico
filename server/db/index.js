@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const { DATABASE } = process.env;
-const DB_URI = `mongodb://localhost/${DATABASE}`;
+const { DB_URI, DATABASE } = process.env;
 
 mongoose
     .connect(DB_URI, { useNewUrlParser: true })
