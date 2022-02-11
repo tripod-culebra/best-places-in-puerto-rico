@@ -16,21 +16,21 @@ Places.get('/', (_, res) =>
 Places.post('/', (req, res) =>
     db
         .savePlace(req.body.formData)
-        .then(results => res.status(201).send(results))
+        .then(successMessage => res.status(201).send(successMessage))
         .catch(error => {
             res.sendStatus(500);
             console.error(error, 'Error: Saving Place');
         })
 );
 
-Places.put('/update', (req, res) => {
-    const changeId = Object.keys(req.body);
-    db.updatePlaceGo(changeId)
-        .then(response => res.status(201).send(response))
+Places.put('/', (req, res) =>
+    db
+        .updatePlaceGo(req.body.id)
+        .then(successMessage => res.status(201).send(successMessage))
         .catch(error => {
             res.status(500);
             console.error(error, 'Error: Updating Place I Want To Go');
-        });
-});
+        })
+);
 
 module.exports = { Places };
