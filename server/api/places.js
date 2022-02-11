@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { Router } = require('express');
 const db = require('../db/index');
 
@@ -15,7 +16,7 @@ Places.get('/', (_, res) =>
 
 Places.post('/', (req, res) =>
     db
-        .savePlace(req.body.formData)
+        .savePlace(req.body.form)
         .then(successMessage => res.status(201).send(successMessage))
         .catch(error => {
             res.sendStatus(500);
