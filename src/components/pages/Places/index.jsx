@@ -5,25 +5,25 @@ import moment from 'moment';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) => {
+const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, completed }) => {
     const [places, setPlaces] = useState([]);
     const getPlacesData = () =>
         axios
-            .get(`${DOMAIN}/api/places`)
+            .get(`${DOMAIN}/api/places?completed=${completed}`)
             .then(({ data }) => setPlaces(data))
             .catch(error => console.error(error, 'Error: Places Not Found'));
 
-    useEffect(getPlacesData, []);
+    useEffect(getPlacesData, [completed]);
 
     const handlePlacesDelete = id =>
         axios
-            .delete(`${DOMAIN}/api/places/delete`, id)
+            .delete(`${DOMAIN}/api/places/${id}`)
             .then(getPlacesData)
             .catch(error => console.error(error, 'Error: Deleting Place'));
 
     const handlePlacesUpdate = id =>
         axios
-            .put(`${DOMAIN}/api/places`, { id })
+            .put(`${DOMAIN}/api/places/${id}`)
             .then(getPlacesData)
             .catch(error => console.error(error, 'Error: Updating Place'));
 
@@ -72,7 +72,7 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) =>
                     ))}
                 </table>
             </div>
-            <PlacesForm setPlaces={setPlaces} />
+            <PlacesForm setPlaces={setPlaces} completed={completed} />
         </div>
     );
 };
@@ -83,6 +83,7 @@ Places.propTypes = {
     isChangeDelete: PropTypes.bool.isRequired,
     showRating: PropTypes.bool.isRequired,
     PlacesForm: PropTypes.func.isRequired,
+    completed: PropTypes.bool.isRequired,
 };
 
 export default Places;
