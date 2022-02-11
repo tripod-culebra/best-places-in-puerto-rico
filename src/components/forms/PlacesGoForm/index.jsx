@@ -4,8 +4,8 @@ import propTypes from 'prop-types';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const PlacesGoForm = ({ setData }) => {
-    const [formData, setFormData] = useState({
+const PlacesGoForm = ({ setPlaces }) => {
+    const [form, setForm] = useState({
         name: '',
         description: '',
         what: '',
@@ -17,12 +17,10 @@ const PlacesGoForm = ({ setData }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios({
-            method: 'post',
-            url: `${DOMAIN}/api/places`,
-            data: { formData },
-        })
-            .then(() => axios.get(`${DOMAIN}/api/places`).then(result => setData(result.data)))
+        axios
+            .post(`${DOMAIN}/api/places`, { form })
+            .then(() => axios.get(`${DOMAIN}/api/places`))
+            .then(({ data }) => setPlaces(data))
             .catch(error => console.error(error, 'Error: Form Not Saved'));
     };
 
@@ -37,8 +35,8 @@ const PlacesGoForm = ({ setData }) => {
                     <label htmlFor="PlacesIWantToGo">
                         <span>Place I Want To Go To</span>
                         <input
-                            onChange={e => setFormData({ ...formData, name: e.target.value })}
-                            value={formData.name}
+                            onChange={e => setForm({ ...form, name: e.target.value })}
+                            value={form.name}
                             type="text"
                             placeholder="Enter Place I Want To Go"
                             id="PlacesIWantToGo"
@@ -50,10 +48,8 @@ const PlacesGoForm = ({ setData }) => {
                     <label htmlFor="description">
                         <span>Description Of Location</span>
                         <textarea
-                            onChange={e =>
-                                setFormData({ ...formData, description: e.target.value })
-                            }
-                            value={formData.description}
+                            onChange={e => setForm({ ...form, description: e.target.value })}
+                            value={form.description}
                             placeholder="Enter Desctiption"
                             id="description"
                             required
@@ -64,8 +60,8 @@ const PlacesGoForm = ({ setData }) => {
                     <label htmlFor="what">
                         <span>What Do You Want To Do?</span>
                         <textarea
-                            onChange={e => setFormData({ ...formData, what: e.target.value })}
-                            value={formData.what}
+                            onChange={e => setForm({ ...form, what: e.target.value })}
+                            value={form.what}
                             placeholder="Enter What You Want To Do"
                             id="what"
                             required
@@ -76,8 +72,8 @@ const PlacesGoForm = ({ setData }) => {
                     <label htmlFor="when">
                         <span>When Do You Want To Go?</span>
                         <input
-                            onChange={e => setFormData({ ...formData, when: e.target.value })}
-                            value={formData.when}
+                            onChange={e => setForm({ ...form, when: e.target.value })}
+                            value={form.when}
                             type="date"
                             id="when"
                             required
@@ -88,8 +84,8 @@ const PlacesGoForm = ({ setData }) => {
                     <label htmlFor="who">
                         <span>Who Do You Want To Go?</span>
                         <textarea
-                            onChange={e => setFormData({ ...formData, who: e.target.value })}
-                            value={formData.who}
+                            onChange={e => setForm({ ...form, who: e.target.value })}
+                            value={form.who}
                             placeholder="Enter Who Went"
                             id="who"
                             required
@@ -100,8 +96,8 @@ const PlacesGoForm = ({ setData }) => {
                     <label htmlFor="rating">
                         <span className="required">Enter A Rating From 1-5</span>
                         <input
-                            onChange={e => setFormData({ ...formData, rating: e.target.value })}
-                            value={formData.rating}
+                            onChange={e => setForm({ ...form, rating: e.target.value })}
+                            value={form.rating}
                             type="number"
                             id="rating"
                             min="1"
@@ -122,7 +118,7 @@ const PlacesGoForm = ({ setData }) => {
 };
 
 PlacesGoForm.propTypes = {
-    setData: propTypes.func.isRequired,
+    setPlaces: propTypes.func.isRequired,
 };
 
 export default PlacesGoForm;
