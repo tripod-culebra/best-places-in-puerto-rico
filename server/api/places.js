@@ -3,9 +3,9 @@ const db = require('../db/index');
 
 const Places = Router();
 
-Places.get('/', (_, res) =>
+Places.get('/', (req, res) =>
     db
-        .getTopPlacesGo()
+        .getTopPlaces(req.query.completed)
         .then(places => res.status(200).send(places))
         .catch(error => {
             res.status(500);
@@ -23,9 +23,19 @@ Places.post('/', (req, res) =>
         })
 );
 
-Places.put('/', (req, res) =>
+Places.put('/:id', (req, res) =>
     db
-        .updatePlaceGo(req.body.id)
+        .updatePlace(req.params.id)
+        .then(successMessage => res.status(201).send(successMessage))
+        .catch(error => {
+            res.status(500);
+            console.error(error, 'Error: Updating Place I Want To Go');
+        })
+);
+
+Places.delete('/:id', (req, res) =>
+    db
+        .deletePlace(req.params.id)
         .then(successMessage => res.status(201).send(successMessage))
         .catch(error => {
             res.status(500);
