@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const { Router } = require('express');
 const db = require('../db/index');
 
