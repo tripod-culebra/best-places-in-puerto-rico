@@ -8,7 +8,7 @@ mongoose
     .catch(err => console.error(`Failed To Connect To Database: ${DATABASE}`, err));
 
 const placesSchema = new mongoose.Schema({
-    placeName: String,
+    name: String,
     description: String,
     what: String,
     when: { type: Date },
@@ -20,21 +20,11 @@ const placesSchema = new mongoose.Schema({
 
 const Place = mongoose.model('Place', placesSchema);
 
-const savePlace = newPlace => {
-    const { placeName, description, what, when, who, rating, completed } = newPlace;
-    const place = new Place({
-        placeName,
-        description,
-        what,
-        when,
-        who,
-        rating,
-        completed,
-    });
-    return Place.find({ placeName })
-        .then(results => !results.length && place.save(newPlace))
+const savePlace = place =>
+    Place.find({ name: place.name })
+        .exec()
+        .then(existingPlace => !existingPlace.length && new Place(place).save(place))
         .catch(error => console.error(error, 'Error: Saving Place'));
-};
 
 const getTopPlacesGo = () =>
     Place.find({ completed: false })
