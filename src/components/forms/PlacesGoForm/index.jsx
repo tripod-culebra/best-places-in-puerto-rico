@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const PlacesGoForm = ({ setPlaces }) => {
+const PlacesGoForm = ({ setPlaces, completed }) => {
     const [form, setForm] = useState({
         name: '',
         description: '',
@@ -19,7 +19,7 @@ const PlacesGoForm = ({ setPlaces }) => {
         e.preventDefault();
         axios
             .post(`${DOMAIN}/api/places`, { form })
-            .then(() => axios.get(`${DOMAIN}/api/places`))
+            .then(() => axios.get(`${DOMAIN}/api/places?completed=${completed}`))
             .then(({ data }) => setPlaces(data))
             .catch(error => console.error(error, 'Error: Form Not Saved'));
     };
@@ -119,6 +119,7 @@ const PlacesGoForm = ({ setPlaces }) => {
 
 PlacesGoForm.propTypes = {
     setPlaces: propTypes.func.isRequired,
+    completed: propTypes.bool.isRequired,
 };
 
 export default PlacesGoForm;
