@@ -23,7 +23,7 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, comp
 
     const handlePlacesUpdate = id =>
         axios
-            .put(`${DOMAIN}/api/places/${id}`)
+            .put(`${DOMAIN}/api/places/${id}`, { completed: true })
             .then(getPlacesData)
             .catch(error => console.error(error, 'Error: Updating Place'));
 
