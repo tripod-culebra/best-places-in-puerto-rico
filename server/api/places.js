@@ -25,7 +25,7 @@ Places.post('/', (req, res) =>
 
 Places.put('/:id', (req, res) =>
     db
-        .updatePlace(req.params.id)
+        .updatePlace(req.params.id, req.body)
         .then(successMessage => res.status(201).send(successMessage))
         .catch(error => {
             res.status(500);
