@@ -6,7 +6,7 @@ const DOMAIN = process.env.REACT_APP_DOMAIN;
 
 const PlacesGoForm = ({ setData }) => {
     const [formData, setFormData] = useState({
-        placeName: '',
+        name: '',
         description: '',
         what: '',
         when: '',
@@ -19,7 +19,7 @@ const PlacesGoForm = ({ setData }) => {
         e.preventDefault();
         axios({
             method: 'post',
-            url: `${DOMAIN}/api/places/save`,
+            url: `${DOMAIN}/api/places`,
             data: { formData },
         })
             .then(() => axios.get(`${DOMAIN}/api/places`).then(result => setData(result.data)))
@@ -37,8 +37,8 @@ const PlacesGoForm = ({ setData }) => {
                     <label htmlFor="PlacesIWantToGo">
                         <span>Place I Want To Go To</span>
                         <input
-                            onChange={e => setFormData({ ...formData, placeName: e.target.value })}
-                            value={formData.placeName}
+                            onChange={e => setFormData({ ...formData, name: e.target.value })}
+                            value={formData.name}
                             type="text"
                             placeholder="Enter Place I Want To Go"
                             id="PlacesIWantToGo"
