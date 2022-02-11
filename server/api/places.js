@@ -3,23 +3,23 @@ const db = require('../db/index');
 
 const Places = Router();
 
-Places.post('/save', (req, res) =>
+Places.get('/', (_, res) =>
+    db
+        .getTopPlacesGo()
+        .then(places => res.status(200).send(places))
+        .catch(error => {
+            res.status(500);
+            console.error(error, 'Error: Getting Places');
+        })
+);
+
+Places.post('/', (req, res) =>
     db
         .savePlace(req.body.formData)
         .then(results => res.status(201).send(results))
         .catch(error => {
             res.sendStatus(500);
             console.error(error, 'Error: Saving Place');
-        })
-);
-
-Places.get('/', (req, res) =>
-    db
-        .getTopPlacesGo()
-        .then(results => res.status(200).send(results))
-        .catch(error => {
-            res.status(500);
-            console.error(error, 'Error: Getting Places');
         })
 );
 
