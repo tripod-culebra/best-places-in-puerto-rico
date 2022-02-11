@@ -26,20 +26,26 @@ const savePlace = place =>
         .then(existingPlace => !existingPlace.length && new Place(place).save(place))
         .catch(error => console.error(error, 'Error: Saving Place'));
 
-const getTopPlacesGo = () =>
-    Place.find({ completed: false })
+const getTopPlaces = completed =>
+    Place.find({ completed })
         .sort({ when: 1 })
         .limit(50)
         .exec()
         .catch(error => console.error(error, 'Error: Getting Places'));
 
-const updatePlaceGo = id =>
+const updatePlace = id =>
     Place.findOneAndUpdate({ _id: id }, { completed: true }, { new: true })
         .exec()
         .catch(error => console.error(error, 'Error: Updating Place'));
 
+const deletePlace = id =>
+    Place.deleteOne({ _id: id }, { new: true })
+        .exec()
+        .catch(error => console.error(error, 'Error: Place Not Deleted'));
+
 module.exports = {
     savePlace,
-    getTopPlacesGo,
-    updatePlaceGo,
+    getTopPlaces,
+    updatePlace,
+    deletePlace,
 };
