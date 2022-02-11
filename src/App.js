@@ -44,6 +44,7 @@ const App = () => {
                                 ]}
                                 isChangeDelete={false}
                                 showRating={false}
+                                completed={false}
                                 PlacesForm={PlacesGoForm}
                             />
                         }
@@ -64,6 +65,7 @@ const App = () => {
                                 ]}
                                 isChangeDelete
                                 showRating
+                                completed
                                 PlacesForm={PlacesBeenForm}
                             />
                         }
