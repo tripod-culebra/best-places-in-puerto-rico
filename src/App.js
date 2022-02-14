@@ -41,11 +41,13 @@ const App = () => {
                                     'When I Want To Go',
                                     'With Who',
                                     'Completed?',
+                                    'Delete?',
                                 ]}
-                                isChangeDelete={false}
                                 showRating={false}
                                 completed={false}
                                 PlacesForm={PlacesGoForm}
+                                isChangeUpdate
+                                isRedo="Completed"
                             />
                         }
                     />
@@ -61,12 +63,14 @@ const App = () => {
                                     'When I Went',
                                     'Who Went',
                                     'Rating',
+                                    'Redo?',
                                     'Delete?',
                                 ]}
-                                isChangeDelete
                                 showRating
                                 completed
                                 PlacesForm={PlacesBeenForm}
+                                isChangeUpdate={false}
+                                isRedo="Redo"
                             />
                         }
                     />
