@@ -33,8 +33,8 @@ const getTopPlaces = completed =>
         .exec()
         .catch(error => console.error(error, 'Error: Getting Places'));
 
-const updatePlace = id =>
-    Place.findOneAndUpdate({ _id: id }, { completed: true }, { new: true })
+const updatePlace = (id, body) =>
+    Place.findOneAndUpdate({ _id: id }, body, { new: true })
         .exec()
         .catch(error => console.error(error, 'Error: Updating Place'));
 
