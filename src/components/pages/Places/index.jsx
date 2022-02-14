@@ -5,7 +5,6 @@ import moment from 'moment';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-// const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, completed }) => {
 const Places = ({
     title,
     tableCols,
