@@ -11,7 +11,7 @@ const Places = ({
     showRating,
     PlacesForm,
     completed,
-    isChangeUpdate,
+    changeCompleted,
     updateButton,
 }) => {
     const [places, setPlaces] = useState([]);
@@ -31,7 +31,7 @@ const Places = ({
 
     const handlePlacesUpdate = id =>
         axios
-            .put(`${DOMAIN}/api/places/${id}`, { completed: isChangeUpdate })
+            .put(`${DOMAIN}/api/places/${id}`, { completed: changeCompleted })
             .then(getPlacesData)
             .catch(error => console.error(error, 'Error: Updating Place'));
 
@@ -90,7 +90,7 @@ Places.propTypes = {
     showRating: PropTypes.bool.isRequired,
     PlacesForm: PropTypes.func.isRequired,
     completed: PropTypes.bool.isRequired,
-    isChangeUpdate: PropTypes.bool.isRequired,
+    changeCompleted: PropTypes.bool.isRequired,
     updateButton: PropTypes.string.isRequired,
 };
 
