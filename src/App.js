@@ -47,7 +47,7 @@ const App = () => {
                                 completed={false}
                                 PlacesForm={PlacesGoForm}
                                 isChangeUpdate
-                                isRedo="Completed"
+                                updateButton="Completed"
                             />
                         }
                     />
@@ -70,7 +70,7 @@ const App = () => {
                                 completed
                                 PlacesForm={PlacesBeenForm}
                                 isChangeUpdate={false}
-                                isRedo="Redo"
+                                updateButton="Redo"
                             />
                         }
                     />
