@@ -5,15 +5,7 @@ import moment from 'moment';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const Places = ({
-    title,
-    tableCols,
-    showRating,
-    PlacesForm,
-    completed,
-    changeCompleted,
-    updateButton,
-}) => {
+const Places = ({ title, tableCols, showRating, PlacesForm, completed, updateButton }) => {
     const [places, setPlaces] = useState([]);
     const getPlacesData = () =>
         axios
@@ -31,7 +23,7 @@ const Places = ({
 
     const handlePlacesUpdate = id =>
         axios
-            .put(`${DOMAIN}/api/places/${id}`, { completed: changeCompleted })
+            .put(`${DOMAIN}/api/places/${id}`, { completed: !completed })
             .then(getPlacesData)
             .catch(error => console.error(error, 'Error: Updating Place'));
 
@@ -90,7 +82,6 @@ Places.propTypes = {
     showRating: PropTypes.bool.isRequired,
     PlacesForm: PropTypes.func.isRequired,
     completed: PropTypes.bool.isRequired,
-    changeCompleted: PropTypes.bool.isRequired,
     updateButton: PropTypes.string.isRequired,
 };
 
