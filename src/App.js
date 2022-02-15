@@ -46,7 +46,6 @@ const App = () => {
                                 showRating={false}
                                 completed={false}
                                 PlacesForm={PlacesGoForm}
-                                changeCompleted
                                 updateButton="Completed"
                             />
                         }
@@ -69,7 +68,6 @@ const App = () => {
                                 showRating
                                 completed
                                 PlacesForm={PlacesBeenForm}
-                                changeCompleted={false}
                                 updateButton="Redo"
                             />
                         }
