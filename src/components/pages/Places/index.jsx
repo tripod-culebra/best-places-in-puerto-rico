@@ -5,25 +5,25 @@ import moment from 'moment';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) => {
-    const [data, setData] = useState([]);
+const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, completed }) => {
+    const [places, setPlaces] = useState([]);
     const getPlacesData = () =>
         axios
-            .get(`${DOMAIN}/api/places`)
-            .then(result => setData(result.data))
+            .get(`${DOMAIN}/api/places?completed=${completed}`)
+            .then(({ data }) => setPlaces(data))
             .catch(error => console.error(error, 'Error: Places Not Found'));
 
-    useEffect(getPlacesData, []);
+    useEffect(getPlacesData, [completed]);
 
     const handlePlacesDelete = id =>
         axios
-            .delete(`${DOMAIN}/api/places/delete`, id)
+            .delete(`${DOMAIN}/api/places/${id}`)
             .then(getPlacesData)
             .catch(error => console.error(error, 'Error: Deleting Place'));
 
     const handlePlacesUpdate = id =>
         axios
-            .put(`${DOMAIN}/api/places/update`, id)
+            .put(`${DOMAIN}/api/places/${id}`, { completed: true })
             .then(getPlacesData)
             .catch(error => console.error(error, 'Error: Updating Place'));
 
@@ -39,10 +39,10 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) =>
                             ))}
                         </tr>
                     </thead>
-                    {data.map(({ place, description, what, when, who, rating, _id: id }) => (
+                    {places.map(({ name, description, what, when, who, rating, _id: id }) => (
                         <tbody key={id}>
                             <tr>
-                                <td>{place}</td>
+                                <td>{name}</td>
                                 <td>{description}</td>
                                 <td>{what}</td>
                                 <td>{moment(when).format('MMMM Do YYYY')}</td>
@@ -72,7 +72,7 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm }) =>
                     ))}
                 </table>
             </div>
-            <PlacesForm setData={setData} />
+            <PlacesForm setPlaces={setPlaces} completed={completed} />
         </div>
     );
 };
@@ -83,6 +83,7 @@ Places.propTypes = {
     isChangeDelete: PropTypes.bool.isRequired,
     showRating: PropTypes.bool.isRequired,
     PlacesForm: PropTypes.func.isRequired,
+    completed: PropTypes.bool.isRequired,
 };
 
 export default Places;
