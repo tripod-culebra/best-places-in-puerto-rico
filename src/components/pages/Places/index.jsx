@@ -12,7 +12,7 @@ const Places = ({
     PlacesForm,
     completed,
     isChangeUpdate,
-    isRedo,
+    updateButton,
 }) => {
     const [places, setPlaces] = useState([]);
     const getPlacesData = () =>
@@ -62,7 +62,7 @@ const Places = ({
                                         className="places-button update-button"
                                         onClick={() => handlePlacesUpdate(id)}
                                     >
-                                        {isRedo}
+                                        {updateButton}
                                     </button>
                                 </td>
                                 <td>
@@ -91,7 +91,7 @@ Places.propTypes = {
     PlacesForm: PropTypes.func.isRequired,
     completed: PropTypes.bool.isRequired,
     isChangeUpdate: PropTypes.bool.isRequired,
-    isRedo: PropTypes.string.isRequired,
+    updateButton: PropTypes.string.isRequired,
 };
 
 export default Places;
