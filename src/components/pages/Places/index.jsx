@@ -5,7 +5,7 @@ import moment from 'moment';
 
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 
-const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, completed }) => {
+const Places = ({ title, tableCols, showRating, PlacesForm, completed, updateButton }) => {
     const [places, setPlaces] = useState([]);
     const getPlacesData = () =>
         axios
@@ -23,7 +23,7 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, comp
 
     const handlePlacesUpdate = id =>
         axios
-            .put(`${DOMAIN}/api/places/${id}`, { completed: true })
+            .put(`${DOMAIN}/api/places/${id}`, { completed: !completed })
             .then(getPlacesData)
             .catch(error => console.error(error, 'Error: Updating Place'));
 
@@ -49,23 +49,22 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, comp
                                 <td>{who}</td>
                                 {showRating && <td>{rating}</td>}
                                 <td>
-                                    {isChangeDelete ? (
-                                        <button
-                                            type="button"
-                                            className="places-button delete-button"
-                                            onClick={() => handlePlacesDelete(id)}
-                                        >
-                                            Delete
-                                        </button>
-                                    ) : (
-                                        <button
-                                            type="button"
-                                            className="places-button update-button"
-                                            onClick={() => handlePlacesUpdate(id)}
-                                        >
-                                            Completed
-                                        </button>
-                                    )}
+                                    <button
+                                        type="button"
+                                        className="places-button update-button"
+                                        onClick={() => handlePlacesUpdate(id)}
+                                    >
+                                        {updateButton}
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        type="button"
+                                        className="places-button delete-button"
+                                        onClick={() => handlePlacesDelete(id)}
+                                    >
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -80,10 +79,10 @@ const Places = ({ title, tableCols, isChangeDelete, showRating, PlacesForm, comp
 Places.propTypes = {
     title: PropTypes.string.isRequired,
     tableCols: PropTypes.instanceOf(Array).isRequired,
-    isChangeDelete: PropTypes.bool.isRequired,
     showRating: PropTypes.bool.isRequired,
     PlacesForm: PropTypes.func.isRequired,
     completed: PropTypes.bool.isRequired,
+    updateButton: PropTypes.string.isRequired,
 };
 
 export default Places;
