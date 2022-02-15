@@ -23,7 +23,7 @@ const Place = mongoose.model('Place', placesSchema);
 const savePlace = place =>
     Place.find({ name: place.name })
         .exec()
-        .then(existingPlace => !existingPlace.length && new Place(place).save(place));
+        .then(existingPlace => !existingPlace.length && new Place(place).save());
 
 const getTopPlaces = completed => Place.find({ completed }).sort({ when: 1 }).limit(50).exec();
 
