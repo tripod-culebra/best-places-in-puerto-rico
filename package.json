@@ -12,6 +12,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mongoose": "^6.2.0",
@@ -23,9 +25,9 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "dev:server": "nodemon ./server/index.js",
-    "start:prod": "node ./server/index.js",
-    "start": "react-scripts start",
+    "dev:server": "HTTPS=true SSL_CRT_FILE=./.cert/localhost.pem SSL_KEY_FILE=./.cert/localhost-key.pem nodemon ./server/index.js",
+    "start:prod": "HTTPS=true SSL_CRT_FILE=./.cert/localhost.pem SSL_KEY_FILE=./.cert/localhost-key.pem node ./server/index.js",
+    "start": "HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
